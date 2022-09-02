@@ -143,13 +143,9 @@ li.dropdown-menu-title {
 .vui-layout-body .app-header .nav-tabs.primary-nav > li.active > a,
 .vui-layout-body .app-header .nav-tabs.product-icon-nav > li.active > a,
 .vui-layout-body .app-header .primary-nav.vmw-tabs > li.active > a,
-.vui-layout-body .app-header .product-icon-nav.vmw-tabs > li.active > a {
+.vui-layout-body .app-header .product-icon-nav.vmw-tabs > li.active > a, .nav.nav-tabs *,
+.nav.nav-tabs > li.active > a:hover  {
   border: none;
-}
-
-.nav.nav-tabs *,
-.nav.nav-tabs > li.active > a:hover {
-  border: 0;
 }
 .nav.nav-tabs > li > a:hover {
   border: 0;
