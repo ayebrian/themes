@@ -13,6 +13,18 @@ html {
   --rounded-1: 4px;
   --bg-1-mid-gray: #161616;
 }
+.vui-primary-tabs .vui-tab-content {
+  background-color: var(--bg-1-mid-gray);
+}
+.vui-toc-tabs {
+  border: none;
+  border-radius: 10px;
+  background-color: #1f2021;
+}
+ div[vui-datagrid] .k-grid.k-widget .k-header.k-grid-toolbar {
+   background-color: #2c2c2c;
+}
+
 .object-navigator.menu-panel {
   padding: 10px;
 }
