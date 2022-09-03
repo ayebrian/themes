@@ -13,16 +13,52 @@ html {
   --rounded-1: 4px;
   --bg-1-mid-gray: #161616;
 }
+.k-header > .search {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  height: 100%;
+}
+.k-header.k-grid-toolbar {
+  padding-top: 10px !important;
+}
+.k-header > .search label {
+  display: none;
+}
+.k-header > .search .search-field,
+.vui-datagrid-filter .search-field {
+  border-radius: 0;
+  margin-top: 0 !important;
+  height: 100%;
+}
+.vui-primary-tabs .vui-tab-content {
+  top: 41px !important;
+}
+.object-navigator-label.bold {
+  color: #c7c7c7;
+}
 .vui-primary-tabs .vui-tab-content {
   background-color: var(--bg-1-mid-gray);
+}
+.object-navigator .object-navigator-list .object-navigator-header-section {
+  border-top: 1px solid #ffffff1f;
 }
 .vui-toc-tabs {
   border: none;
   border-radius: 10px;
   background-color: #1f2021;
 }
- div[vui-datagrid] .k-grid.k-widget .k-header.k-grid-toolbar {
-   background-color: #2c2c2c;
+div[vui-datagrid] .k-grid.k-widget .k-header.k-grid-toolbar {
+  background-color: #2c2c2c;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  padding-top: 10px;
+  position: relative;
 }
 
 .object-navigator.menu-panel {
@@ -36,8 +72,10 @@ html {
 .object-navigator .object-navigator-list .object-navigator-header-selected {
   background-color: #236cbb;
 }
-.object-navigator .object-navigator-list .object-navigator-header:hover {
+.object-navigator .object-navigator-list .object-navigator-header:hover,
+.object-navigator .object-navigator-list > li > a.object:hover {
   background-color: #164170;
+  color: #fff !important;
 }
 .search .search-field,
 .vui-datagrid-filter .search-field {
@@ -155,16 +193,36 @@ li.dropdown-menu-title {
 .vui-layout-body .app-header .nav-tabs.primary-nav > li.active > a,
 .vui-layout-body .app-header .nav-tabs.product-icon-nav > li.active > a,
 .vui-layout-body .app-header .primary-nav.vmw-tabs > li.active > a,
-.vui-layout-body .app-header .product-icon-nav.vmw-tabs > li.active > a, .nav.nav-tabs *,
-.nav.nav-tabs > li.active > a:hover  {
+.vui-layout-body .app-header .product-icon-nav.vmw-tabs > li.active > a,
+.nav.nav-tabs *,
+.nav.nav-tabs > li.active > a:hover {
   border: none;
+  border-radius: 6px !important;
+}
+.nav.nav-tabs > li.active > a,
+.vmw-tabs > li.active > a,
+.vui-layout-body .app-header .nav-tabs.primary-nav > li.active > a,
+.vui-layout-body .app-header .nav-tabs.product-icon-nav > li.active > a,
+.vui-layout-body .app-header .primary-nav.vmw-tabs > li.active > a,
+.vui-layout-body .app-header .product-icon-nav.vmw-tabs > li.active > a {
+  border-radius: 5px;
 }
 .nav.nav-tabs > li > a:hover {
   border: 0;
   border-color: transparent;
+  background: rgb(255 255 255 / 5%) !important;
 }
 .nav.nav-tabs {
   background-color: #2c2c2c;
+  padding: 8px;
+  display: flex;
+  gap: 15px;
+}
+.nav.nav-tabs > li * {
+  font-size: 14px;
+}
+.nav.nav-tabs > li.active a:hover {
+  color: white !important;
 }
 .nav.nav-tabs > li.active a {
   color: black !important;
@@ -207,7 +265,7 @@ li.dropdown-menu-title {
 .esx-main-content {
   border: 0 !important;
   border-radius: 0 0 5px 5px;
-  padding: 5px;
+  padding: 0px;
   background-color: var(--bg-1-mid-gray);
 }
 .panel-content {
