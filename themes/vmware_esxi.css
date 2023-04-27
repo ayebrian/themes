@@ -1,7 +1,19 @@
 /*
 @author ayebrian
-@description VMware ESXi 6.7/7.0 Custom Theme with Modern UI(basically)
+@description VMware ESXi 6.5/6.7/7.0 Custom Theme with Modern UI
 */
+.base-app-style {
+  min-width: 768px;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-image: linear-gradient(
+    to bottom,
+    var(--app-background-color-1) 0,
+    var(--app-background-color-2) 100%
+  );
+}
+
 body,
 html {
   font-family: Segoe UI, Arial, sans-serif;
@@ -12,6 +24,7 @@ html {
   --rounded-2: 8px;
   --rounded-1: 4px;
   --bg-1-mid-gray: #161616;
+  --tabs-n-table: #1f2021;
 }
 .k-header > .search {
   margin: 0;
@@ -236,6 +249,7 @@ li.dropdown-menu-title {
 }
 .vui-layout-body .app-panel-main {
   left: 50px;
+  right: 0;
 }
 .object-navigator-counter {
   background: none;
@@ -306,4 +320,79 @@ header {
 }
 .vui-layout-body .app-header .vmware-logo {
   margin-top: 8px;
+}
+div[vui-datagrid] .k-grid.k-widget .k-header.k-grid-toolbar {
+  display: none;
+}
+
+div[vui-datagrid] .k-grid.k-widget .k-grid-header th.k-header {
+  background-color: var(--tabs-n-table);
+}
+.k-grid-header .k-link:link,
+.k-grid-header .k-link:visited,
+.k-grid-header .k-nav-current.k-state-hover .k-link,
+.k-grouping-header .k-link {
+  color: #b1b1b1;
+}
+div.vmScreenScrape {
+  background-color: #222222;
+  box-shadow: none;
+  border-radius: 8px;
+  overflow: hidden;
+}
+[ng-show="currentVM.status"] {
+  display: flex;
+  flex-direction: column;
+}
+[vui-action-bar="vmOperationsActionBar"] {
+  order: -1;
+  margin-bottom: 0 !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1;
+  padding: 5px;
+  background-color: var(--tabs-n-table);
+}
+.vui-action-bar .vui-actionbar-separator {
+  display: none;
+}
+.vui-action-bar ul li a:hover:not(.disabled) {
+  background-color: #404040;
+  border: none;
+  border-radius: 5px;
+}
+.vui-action-bar ul li a {
+  border: 0;
+  padding: 5px 8px;
+}
+.vui-action-bar ul li a:focus {
+  box-shadow: 0 0 0 1px #ababab;
+}
+::-webkit-scrollbar {
+  background: var(--tabs-n-table);
+}
+.k-grid-content {
+  background: #2c2c2c;
+  border: 0;
+}
+div[vui-datagrid] .k-grid.k-widget .k-grid-header {
+  border: 0;
+}
+.vui-popup {
+  border: 0;
+  border-radius: 15px;
+}
+.modal-backdrop {
+  background-color: rgb(255 255 255 / 1%);
+}
+.titlebar,
+.vui-wizard .wizard-modal-titlebar {
+  background: #141414;
+  border: 0;
+}
+.vui-popup.vui-dialog .panel-content {
+  background-color: #141414;
+}
+.vui-popup.vui-dialog .panel-content {
+  background-color: var(--tabs-n-table);
 }
