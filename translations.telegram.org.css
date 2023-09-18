@@ -10,7 +10,7 @@
 @updateURL    https://raw.githubusercontent.com/ayebrian/themes/master/translations.telegram.org.css
 
 ==/UserStyle== */
-@-moz-document domain("www.youtube.com") {
+@-moz-document domain("translations.telegram.org") {
   body {
     background: var(--body-bg);
     --body-bg: #1f2124;
