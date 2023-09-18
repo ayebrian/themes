@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name         Translations for Telegram
 @namespace    ayebrian
-@version      1.0.1
+@version      1.0.2
 @description  A dark theme for Translations for Telegram
 @author       ayebrian
 @license      CC BY-NC-ND 4.0
@@ -30,7 +30,9 @@
     color: white;
     font-size: 16px;
   }
-
+  hr {
+    border-color: var(--border1);
+  }
   a,
   a:hover {
     color: var(--blue);
@@ -110,6 +112,13 @@
   .tr-search-field-wrap {
     background: var(--header-bg);
   }
+  .input.form-control.tr-form-control.key-add-suggestion-field {
+    border: 0;
+    box-shadow: unset;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+  }
 
   ul#tr-menu-language-items > li {
     margin-bottom: 5px;
@@ -177,7 +186,7 @@
     opacity: 0;
   }
   .tr-menu {
-    margin-right: 20px;
+    padding: 10px;
   }
   .key-default {
     border-color: var(--border1);
@@ -201,5 +210,78 @@
   .screenshot-placeholder {
     background: #474b55;
     border-radius: 10px;
+  }
+  .screenshot-side-wrap {
+    border-radius: 0 10px 10px 0;
+  }
+  .screenshot-side-scrollable {
+    border-left: 0;
+    background: var(--body-bg);
+    overflow-y: overlay;
+  }
+  .screenshot-full-bg,
+  .screenshot-full {
+    background-color: unset;
+  }
+  img.screenshot-full {
+    border-radius: 10px;
+  }
+  .screenshot-key-row {
+    border: 0;
+    border-radius: 5px;
+    padding: 10px;
+    line-height: normal;
+  }
+  .screenshot-key-row.hover,
+  .screenshot-key-row.active {
+    background-color: #282a2f;
+    border: 0;
+    margin-top: 0;
+  }
+  .screenshot-layer-keys {
+    padding: 10px;
+  }
+  .popup-container {
+    background: #00000094;
+  }
+  .tr-screenshot-thumb {
+    border-radius: 10px;
+  }
+  .tr-screenshot-keys-cnt {
+    line-height: normal;
+    padding: 5px 8px;
+    border-radius: 6px;
+    height: 24px;
+  }
+  .tr-screenshot-thumb {
+    background: #000000 no-repeat center;
+    background-size: 100% auto;
+  }
+  @media (min-width: 1100px) {
+    .container {
+      width: 1100px;
+    }
+  }
+  .key-add-suggestion-header {
+    color: white;
+  }
+  .btn-default:hover,
+  .btn-default:focus,
+  .btn-default:active,
+  .open > .dropdown-toggle.btn-default,
+  .btn-default {
+    color: var(--blue);
+  }
+  .btn-default:hover,
+  .btn-default:focus,
+  .btn-default:active,
+  .open > .dropdown-toggle.btn-default {
+    background-color: #5cbbed29;
+  }
+  .btn,
+  a.btn,
+  button.btn {
+    border-radius: 255px;
+    line-height: normal;
   }
 }
