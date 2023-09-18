@@ -10,7 +10,9 @@
 @updateURL    https://raw.githubusercontent.com/ayebrian/themes/master/translations.telegram.org.css
 
 ==/UserStyle== */
-@-moz-document domain("translations.telegram.org") {
+
+@-moz-document url-prefix("https://translations.telegram.org")
+{
   body {
     background: var(--body-bg);
     --body-bg: #1f2124;
@@ -22,18 +24,22 @@
     --blue: #5cbbed;
     --text-in: #000;
   }
+
   body,
   html {
     color-scheme: dark;
     color: white;
   }
+
   a,
   a:hover {
     color: var(--blue);
   }
+
   header {
     background: unset;
   }
+
   header .header-wrap {
     background: #16181a;
     border: 0;
@@ -43,61 +49,75 @@
     margin-top: 10px;
     border-bottom-right-radius: 0;
   }
+
   .container {
     background: var(--body-bg);
   }
+
   .tr-header,
   .tr-header-link,
   .tr-header-link:hover {
     color: #fff;
   }
+
   .tr-menu-item,
   header .breadcrumb > .active,
   header .breadcrumb > .active a {
     color: #b9b9b9;
   }
+
   .tr-section-row .tr-section-caption {
     color: #fff;
   }
+
   .tr-search-field-wrap {
     background: var(--body-bg);
     border-bottom: 0;
     margin-bottom: 1px;
   }
+
   .active .tr-menu-item,
   .tr-menu-items .tr-badges:hover + a.tr-menu-item {
     background: #43474d;
     color: white;
   }
+
   a.tr-menu-item:hover,
   .tr-menu-items .tr-badges:hover + a.tr-menu-item {
     background: #2c2f33;
     color: white;
   }
+
   .tr-menu-section .tr-menu-item {
     border-radius: 10px;
   }
+
   .tr-search {
     border-radius: 10px;
     padding-top: 10px;
     overflow: hidden;
   }
+
   .content,
   .tr-menu {
     border: 0;
   }
+
   .form-control,
   .tr-search-field-wrap {
     background: var(--header-bg);
   }
+
   ul#tr-menu-language-items > li {
     margin-bottom: 5px;
   }
+
   .tr-share-link-copy,
   .tr-share-link-copied {
     line-height: normal;
     top: 10px;
   }
+
   input.tr-form-control[readonly],
   textarea.tr-form-control[readonly],
   .input.tr-form-control[readonly],
@@ -109,11 +129,13 @@
     padding: 10px;
     color: var(--second-text-color);
   }
+
   .tr-badges .tr-badge,
   .tr-badges a.tr-badge:hover {
     color: var(--text-in);
     background: var(--blue);
   }
+
   .tr-search-filter {
     background: #6e767f;
     color: white;
