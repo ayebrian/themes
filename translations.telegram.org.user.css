@@ -1,13 +1,12 @@
 /* ==UserStyle==
 @name         Translations for Telegram
 @namespace    ayebrian
-@version      1.0.0
+@version      1.0.1
 @description  A dark theme for Translations for Telegram
 @author       ayebrian
 @license      CC BY-NC-ND 4.0
 @preprocessor stylus
 @homepageURL  https://github.com/ayebrian/themes
-@updateURL    https://raw.githubusercontent.com/ayebrian/themes/master/translations.telegram.org.user.css
 
 ==/UserStyle== */
 
@@ -29,6 +28,7 @@
   html {
     color-scheme: dark;
     color: white;
+    font-size: 16px;
   }
 
   a,
@@ -49,7 +49,9 @@
     margin-top: 10px;
     border-bottom-right-radius: 0;
   }
-
+  header.has-search.search-collapsed > .container > div.header-wrap {
+    border-bottom-right-radius: 10px;
+  }
   .container {
     background: var(--body-bg);
   }
@@ -139,5 +141,30 @@
   .tr-search-filter {
     background: #6e767f;
     color: white;
+  }
+  .tr-search-filter.dropdown-toggle:hover {
+    background: #acb9c8;
+    color: black;
+  }
+  .value {
+    color: white;
+  }
+  .p-value {
+    color: red;
+  }
+  .tr-key-row-wrap {
+    border-bottom: 1px solid #414141;
+  }
+  mark.token {
+    background: #63531e;
+    box-shadow: unset;
+  }
+  .tr-value-upload-photo,
+  .tr-value-photo {
+    background-color: #32353b;
+    border-radius: 10px;
+  }
+  .pluralized:after {
+    border: 1px solid #828995;
   }
 }
