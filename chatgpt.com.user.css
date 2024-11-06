@@ -1,10 +1,9 @@
 /* ==UserStyle==
 @name           ChatGPT Customizable Colors
 @namespace      ayebrian
-@version        1.0.0
+@version        1.0.1
 @description    Customize the ChatGPT interface by selecting your preferred color palette for a personalized experience.
 @author         ayebrian
-@license      CC BY-NC-ND 4.0
 @homepageURL  https://github.com/ayebrian/themes
 
 @var color primary-color "Accent color" "#2e3e61"
@@ -37,6 +36,7 @@
      --text-secondary: var(--text-secondary-color);
      --text-tertiary:  var(--text-tertiary-color);
      --main-surface-tertiary:  var(--scroll-bg);
+	 --message-surface: var(--message-bg);
  }
  
  
