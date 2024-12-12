@@ -31,7 +31,7 @@
  }
  .dark {
 	 --sidebar-surface-primary: var(--sidebar-bg);
-	 --sidebar-surface-tertiary: var(--message-bg);
+	 --sidebar-surface-tertiary: var(--sidebar-surface-secondary);
      --sidebar-surface-secondary:  var(--sidebar-button-hover);
      --main-surface-secondary:  var(--sidebar-button-hover);
      --main-surface-primary:  var(--sidebar-button-hover);
