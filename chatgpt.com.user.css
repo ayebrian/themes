@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           ChatGPT Customizable Colors
 @namespace      ayebrian
-@version        1.0.4
+@version        1.0.5
 @description    Customize the ChatGPT interface by selecting your preferred color palette for a personalized experience.
 @author         ayebrian
 @homepageURL  https://github.com/ayebrian/themes
@@ -10,140 +10,167 @@
 
 
 ==/UserStyle== */
-
 @-moz-document domain("chatgpt.com") {
-    :root {
-     /*--primary-color: #2e3e61;*/
-     --bg-main: color-mix(in srgb, var(--primary-color) 30%, #000 80%);
-     --sidebar-bg: color-mix(in srgb, var(--primary-color) 20%, #000);
-     --sidebar-button-hover: color-mix(in srgb, var(--primary-color), #000);
-     --text-main: color-mix(in srgb, var(--primary-color) 30%, #fff);
-     --text-tertiary-color: color-mix(in srgb, var(--primary-color) 75%, #fff);
-     --text-secondary-color: color-mix(in srgb, var(--primary-color) 66%, #fff);
-     --border-color: color-mix(in srgb, var(--primary-color) 20%, #ffffff08);
-     --border-enabled-color: color-mix(in srgb, var(--primary-color) 50%, #ffffff80);
-     --message-bg: color-mix(in srgb, var(--primary-color) 20%, #ffffff08);
-     --scroll-bg: color-mix(in srgb, var(--primary-color) 70%, #797979);
-     --disabled-button-bg: color-mix(in srgb, var(--primary-color) 25%, #fff 15%);
-     --enabled-button-bg: color-mix(in srgb, var(--primary-color) 100%, #000 5%);
-     
-     
- }
- .dark {
-	 --sidebar-surface-primary: var(--sidebar-bg);
-	 --sidebar-surface-tertiary: var(--sidebar-surface-secondary);
-     --sidebar-surface-secondary:  var(--sidebar-button-hover);
-     --main-surface-secondary:  var(--sidebar-button-hover);
-     --main-surface-primary:  var(--sidebar-button-hover);
-     --text-secondary: var(--text-secondary-color);
-     --text-tertiary:  var(--text-tertiary-color);
-     --main-surface-tertiary:  var(--scroll-bg);
-	 --message-surface: var(--message-bg);
- }
- 
- 
- *, .dark :hover {
-     scrollbar-color: var(--scroll-bg) transparent;
- }
- 
- body, html, .bg-token-main-surface-primary, html:not(.screen-arch), html:not(.screen-arch) body{
-     background-color: var(--bg-main);
-     color: var(--text-main)!important;
- }
- .bg-token-sidebar-surface-primary {
-         background-color: var(--sidebar-bg)!important;
- }
- .from-token-sidebar-surface-primary {
-     --tw-gradient-from:  var(--sidebar-bg);
- }
- .from-token-main-surface-primary, .dark\:from-gray-800:is(.dark *) {
-     --tw-gradient-from:  var(--bg-main);
- }
- .bg-token-sidebar-surface-secondary {
-     background-color: var(--sidebar-button-hover);
- }
- .dark\:border-gray-800:is(.dark *) {
-     border-color:  var(--border-color);
- }
- @media (hover: hover) and (pointer: fine) {
-     .dark\:hover\:bg-token-main-surface-secondary:hover:is(.dark *),         .dark\:md\:hover\:bg-gray-700:hover:is(.dark *) {
-         background-color: var(--sidebar-surface-secondary);
-     }
- }
- @media (hover: hover) and (pointer: fine) {
-     .hover\:bg-token-main-surface-secondary:hover {
-         background-color: var(--sidebar-surface-secondary);
-     }
- }
-@media (hover: hover) and (pointer: fine) {
-    .dark\:can-hover\:hover\:bg-gray-700:hover:is(.dark *) {
-        background-color: var(--enabled-button-bg);
-		color: var(--text-main);
-    }
+	:root {
+		/*--primary-color: #2e3e61;*/
+		--bg-main: color-mix(in srgb, var(--primary-color) 30%, #000 80%);
+		--sidebar-bg: color-mix(in srgb, var(--primary-color) 20%, #000);
+		--sidebar-button-hover: color-mix(in srgb, var(--primary-color), #000);
+		--text-main: color-mix(in srgb, var(--primary-color) 30%, #fff);
+		--text-tertiary-color: color-mix(in srgb, var(--primary-color) 75%, #fff);
+		--text-secondary-color: color-mix(in srgb, var(--primary-color) 66%, #fff);
+		--border-color: color-mix(in srgb, var(--primary-color) 20%, #ffffff08);
+		--border-enabled-color: color-mix(in srgb, var(--primary-color) 50%, #ffffff80);
+		--message-bg: color-mix(in srgb, var(--primary-color) 20%, #ffffff08);
+		--scroll-bg: color-mix(in srgb, var(--primary-color) 70%, #797979);
+		--disabled-button-bg: color-mix(in srgb, var(--primary-color) 25%, #fff 15%);
+		--enabled-button-bg: color-mix(in srgb, var(--primary-color) 100%, #000 5%);
+	}
+
+	.dark {
+		--sidebar-surface-primary: var(--sidebar-bg);
+		--sidebar-surface-tertiary: var(--sidebar-surface-secondary);
+		--sidebar-surface-secondary: var(--sidebar-button-hover);
+		--main-surface-secondary: var(--sidebar-button-hover);
+		--main-surface-primary: var(--sidebar-button-hover);
+		--text-secondary: var(--text-secondary-color);
+		--text-tertiary: var(--text-tertiary-color);
+		--main-surface-tertiary: var(--scroll-bg);
+		--message-surface: var(--message-bg);
+	}
+
+
+	*,
+	.dark :hover {
+		scrollbar-color: var(--scroll-bg) transparent;
+	}
+
+	body,
+	html,
+	.bg-token-main-surface-primary,
+	html:not(.screen-arch),
+	html:not(.screen-arch) body {
+		background-color: var(--bg-main);
+		color: var(--text-main)!important;
+	}
+
+	.bg-token-sidebar-surface-primary {
+		background-color: var(--sidebar-bg)!important;
+	}
+
+	.from-token-sidebar-surface-primary {
+		--tw-gradient-from: var(--sidebar-bg);
+	}
+
+	.from-token-main-surface-primary,
+	.dark\:from-gray-800:is(.dark *) {
+		--tw-gradient-from: var(--bg-main);
+	}
+
+	.bg-token-sidebar-surface-secondary {
+		background-color: var(--sidebar-button-hover);
+	}
+
+	.dark\:border-gray-800:is(.dark *) {
+		border-color: var(--border-color);
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		.dark\:hover\:bg-token-main-surface-secondary:hover:is(.dark *),
+		.dark\:md\:hover\:bg-gray-700:hover:is(.dark *) {
+			background-color: var(--sidebar-surface-secondary);
+		}
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		.hover\:bg-token-main-surface-secondary:hover {
+			background-color: var(--sidebar-surface-secondary);
+		}
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		.dark\:can-hover\:hover\:bg-gray-700:hover:is(.dark *) {
+			background-color: var(--enabled-button-bg);
+			color: var(--text-main);
+		}
+	}
+
+	.dark\:bg-token-main-surface-secondary:is(.dark *),
+	.dark\:bg-\[\#303030\]:is(.dark *) {
+		background-color: var(--main-surface-secondary);
+	}
+
+	/* message input */
+	.dark svg {
+		color: var(--text-main)!important;
+	}
+
+	.dark\:disabled\:text-token-main-surface-secondary:disabled:is(.dark *) {
+		background-color: var(--disabled-button-bg);
+	}
+
+	.dark\:bg-white:is(.dark *) {
+		background-color: var(--enabled-button-bg);
+	}
+
+	.btn-green {
+		background-color: var(--primary-color);
+	}
+
+	.btn-secondary {
+		background-color: var(--bg-main);
+	}
+
+	button.btn.relative.btn-secondary.btn-small {
+		background-color: var(--enabled-button-bg);
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		.btn-green:hover {
+			background-color: var(--primary-color);
+			opacity: 0.7;
+		}
+	}
+
+	.bg-token-main-surface-tertiary {
+		background-color: var(--border-color);
+	}
+
+	.radix-state-open\:bg-token-main-surface-secondary[data-state=open] {
+		background-color: var(--message-bg);
+	}
+
+	.bg-token-main-surface-secondary {
+		background-color: var(--sidebar-button-hover);
+	}
+
+	@media (min-width: 768px) {
+		.md\:radix-state-active\:bg-token-main-surface-secondary[data-state=active] {
+			background-color: var(--sidebar-button-hover);
+		}
+	}
+
+	.dark\:radix-state-checked\:bg-green-600[data-state=checked]:is(.dark *) {
+		background-color: var(--primary-color);
+		border-color: var(--border-enabled-color);
+	}
+
+	.btn-primary:is(.dark *) {
+		background-color: var(--primary-color);
+		color: var(--text-main)!important;
+	}
+
+	.dark\:bg-gray-700:is(.dark *) {
+		background-color: var(--message-bg);
+	}
+
+	@media (hover: hover) and (pointer: fine) {
+		.btn-primary:hover:is(.dark *) {
+			background-color: var(--scroll-bg);
+		}
+	}
+
+	.dark\:prose-invert:is(.dark *) :where(code):not(:where([class~=not-prose] *)) {
+		background-color: var(--disabled-button-bg);
+	}
 }
-    
- .dark\:bg-token-main-surface-secondary:is(.dark *), .dark\:bg-\[\#303030\]:is(.dark *) {
-     background-color: var(--main-surface-secondary);
- } /* message input */
-
- .dark svg {
-     color: var(--text-main)!important;
- }
- .dark\:disabled\:text-token-main-surface-secondary:disabled:is(.dark *) {
-     background-color: var(--disabled-button-bg);
- }
- 
- .dark\:bg-white:is(.dark *) {
-     background-color: var(--enabled-button-bg);
- }
- .btn-green{
-     background-color:  var(--primary-color);
- }
- .btn-secondary  {
-     background-color:  var(--bg-main);
- }
- button.btn.relative.btn-secondary.btn-small {
-     background-color:  var(--enabled-button-bg);
- }
- 
- @media (hover: hover) and (pointer: fine) {
-     .btn-green:hover { 
-         background-color: var(--primary-color);
-         opacity: 0.7;
-     }
- }
- .bg-token-main-surface-tertiary {
-         background-color:  var(--border-color);
- }
- .radix-state-open\:bg-token-main-surface-secondary[data-state=open] {
-         background-color:  var(--message-bg);
- }
- .bg-token-main-surface-secondary {
-     background-color:  var(--sidebar-button-hover);
- }
- @media (min-width: 768px) {
-     .md\:radix-state-active\:bg-token-main-surface-secondary[data-state=active] { 
-         background-color:  var(--sidebar-button-hover);
-     }
- }
- .dark\:radix-state-checked\:bg-green-600[data-state=checked]:is(.dark *) {
-     background-color: var(--primary-color);
-     border-color: var(--border-enabled-color);
- }
- .btn-primary:is(.dark *) {
-     background-color:  var(--primary-color);
-     color: var(--text-main)!important;
- }
- .dark\:bg-gray-700:is(.dark *) {
-     background-color:  var(--message-bg);
- }
- @media (hover: hover) and (pointer: fine) {
-     .btn-primary:hover:is(.dark *) {
-         background-color: var(--scroll-bg);
-     }
- }
- }
-
- .dark\:prose-invert:is(.dark *) :where(code):not(:where([class~=not-prose] *)) {
-     background-color: var(--disabled-button-bg);
- }
