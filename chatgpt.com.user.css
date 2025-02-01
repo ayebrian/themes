@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           ChatGPT Customizable Colors
 @namespace      ayebrian
-@version        1.0.3
+@version        1.0.4
 @description    Customize the ChatGPT interface by selecting your preferred color palette for a personalized experience.
 @author         ayebrian
 @homepageURL  https://github.com/ayebrian/themes
@@ -75,9 +75,17 @@
          background-color: var(--sidebar-surface-secondary);
      }
  }
- .dark\:bg-token-main-surface-secondary:is(.dark *) {
+@media (hover: hover) and (pointer: fine) {
+    .dark\:can-hover\:hover\:bg-gray-700:hover:is(.dark *) {
+        background-color: var(--enabled-button-bg);
+		color: var(--text-main);
+    }
+}
+    
+ .dark\:bg-token-main-surface-secondary:is(.dark *), .dark\:bg-\[\#303030\]:is(.dark *) {
      background-color: var(--main-surface-secondary);
- }
+ } /* message input */
+
  .dark svg {
      color: var(--text-main)!important;
  }
@@ -86,7 +94,7 @@
  }
  
  .dark\:bg-white:is(.dark *) {
-     background-color: var(--enabled-button-bg);;
+     background-color: var(--enabled-button-bg);
  }
  .btn-green{
      background-color:  var(--primary-color);
