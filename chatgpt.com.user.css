@@ -1,18 +1,18 @@
 /* ==UserStyle==
 @name           ChatGPT Customizable Colors
 @namespace      ayebrian
-@version        1.0.5
+@version        1.0.6
 @description    Customize the ChatGPT interface by selecting your preferred color palette for a personalized experience.
 @author         ayebrian
-@homepageURL  https://github.com/ayebrian/themes
+@homepageURL    https://github.com/ayebrian/themes
 
-@var color primary-color "Accent color" "#2e3e61"
+@var color primary-color "Accent color" "#4d5b6f"
 
 
 ==/UserStyle== */
 @-moz-document domain("chatgpt.com") {
 	:root {
-		/*--primary-color: #2e3e61;*/
+		/*--primary-color: #2e3e61; Old color*/
 		--bg-main: color-mix(in srgb, var(--primary-color) 30%, #000 80%);
 		--sidebar-bg: color-mix(in srgb, var(--primary-color) 20%, #000);
 		--sidebar-button-hover: color-mix(in srgb, var(--primary-color), #000);
@@ -37,8 +37,9 @@
 		--text-tertiary: var(--text-tertiary-color);
 		--main-surface-tertiary: var(--scroll-bg);
 		--message-surface: var(--message-bg);
+		--bg-primary: var(--sidebar-bg);
+		--surface-hover: var(--sidebar-button-hover);
 	}
-
 
 	*,
 	.dark :hover {
@@ -111,6 +112,7 @@
 
 	.dark\:bg-white:is(.dark *) {
 		background-color: var(--enabled-button-bg);
+		/* Deprecated */
 	}
 
 	.btn-green {
@@ -155,11 +157,11 @@
 		border-color: var(--border-enabled-color);
 	}
 
+	/* QUESTION: Remove in the future if doesn't break anything
 	.btn-primary:is(.dark *) {
 		background-color: var(--primary-color);
 		color: var(--text-main)!important;
-	}
-
+	}*/
 	.dark\:bg-gray-700:is(.dark *) {
 		background-color: var(--message-bg);
 	}
@@ -172,5 +174,28 @@
 
 	.dark\:prose-invert:is(.dark *) :where(code):not(:where([class~=not-prose] *)):not([class*="language-"]) {
 		background-color: var(--disabled-button-bg);
+	}
+
+	.bg-token-bg-primary {
+		background-color: transparent;
+		/* FIX: Explore GPTs search input bg */
+	}
+
+	/* LATER: Add the toggle to switch between 2 button styles(Color, White)
+	button[inputstate="default"] {
+		background: #fff!important;
+	}
+	button[inputstate="default"] > div > svg {
+		color:  var(--sidebar-bg)!important;
+	}
+	*/
+	[dir=ltr] .horzScrollShadows {
+		background: 0;
+		/* FIX: Table with unexpected background */
+	}
+
+	.dark\:bg-token-main-surface-secondary:is(.dark *) {
+		background: var(--sidebar-button-hover);
+		/* Search hover on chats */
 	}
 }
