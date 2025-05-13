@@ -172,7 +172,7 @@
 		}
 	}
 
-	.dark\:prose-invert:is(.dark *) :where(code):not(:where([class~=not-prose] *)):not([class*="language-"]) {
+	.dark\:prose-invert:is(.dark *) :where(code):not(:where([class~=not-prose] *)):not([class*="whitespace-pre!"]) {
 		background-color: var(--disabled-button-bg);
 	}
 
