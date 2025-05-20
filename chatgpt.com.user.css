@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           ChatGPT Customizable Colors
 @namespace      ayebrian
-@version        1.2.0
+@version        1.2.1
 @description    Customize the ChatGPT interface by selecting your preferred color palette for a personalized experience.
 @author         ayebrian
 @homepageURL    https://github.com/ayebrian/themes
@@ -30,8 +30,8 @@
 
 	:root.light {
 		--primary-color: var(--primary-color-light);
-		--bg-main: color-mix(in srgb, var(--primary-color) 30%, #fff 80%);
-		--sidebar-bg: color-mix(in srgb, var(--primary-color) 20%, #fff);
+		--bg-main: color-mix(in srgb, var(--primary-color) 20%, #fff 80%);
+		--sidebar-bg: color-mix(in srgb, var(--primary-color) 35%, #fff 75%);
 		--sidebar-button-hover: color-mix(in srgb, var(--primary-color), #fff);
 		--text-main: color-mix(in srgb, var(--primary-color) 30%, #000);
 		--text-tertiary-color: color-mix(in srgb, var(--primary-color) 75%, #000);
@@ -119,8 +119,10 @@
 	.dark\:bg-\[\#303030\]:is(.dark *) {
 		background-color: var(--main-surface-secondary);
 	}
+
 	.shadow-short:not(:is(.dark *)) {
-		background-color : #fff; /* Light mode text input */
+		background-color: #fff;
+		/* Light mode text input */
 	}
 
 	/* message input */
@@ -184,6 +186,7 @@
 	.btn-primary:is(.dark *) {
 		background-color: var(--primary-color);
 		color: var(--text-main)!important;
+	20.05.25: Seems it's being used by the share button modal
 	}*/
 	:is(.dark, .light) .dark\:bg-gray-700 {
 		background-color: var(--message-bg);
@@ -230,5 +233,10 @@
 	.\[--menu-item-highlighted\:\#f5f5f5\] {
 		--menu-item-highlighted: inherit;
 		/* inherit GPT version selection hover from style */
+	}
+
+	img.absolute.inset-0.m-0.h-full.w-full.mix-blend-darken.object-cover {
+		mix-blend-mode: normal;
+		/* Remove unused and breaking blending for images from search in chats */
 	}
 }
