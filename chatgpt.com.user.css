@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           ChatGPT Customizable Colors
 @namespace      ayebrian
-@version        1.2.2
+@version        1.2.3
 @description    Customize the ChatGPT interface by selecting your preferred color palette for a personalized experience.
 @author         ayebrian
 @homepageURL    https://github.com/ayebrian/themes
@@ -67,19 +67,24 @@
 
 	.__menu-item {
 		/* Colors for hover at least for buttons in the sidebar */
-		--menu-item-open: var(--main-surface-primary);
-		--menu-item-highlighted: var(--main-surface-primary);
-		--menu-item-open: var(--main-surface-primary);
-		--menu-item-hover: var(--main-surface-primary);
+		--menu-item-open: var(--message-bg);
+		--menu-item-highlighted: var(--message-bg);
+		--menu-item-open: var(--message-bg);
+		--menu-item-hover: var(--message-bg);
 	}
 
 	body,
 	html,
-	.bg-token-main-surface-primary,
 	html:not(.screen-arch),
 	html:not(.screen-arch) body {
 		background-color: var(--bg-main);
 		color: var(--text-main)!important;
+	}
+
+	.bg-token-main-surface-primary,
+	.relative.bg-token-main-surface-primary {
+		background-color: var(--bg-main)!important;
+		/* Upgrade your Plan Page & Model Selector BG */
 	}
 
 	.bg-token-sidebar-surface-primary {
@@ -249,8 +254,9 @@
 	}
 
 	.__menu-item:not(:disabled):not([data-disabled]):active:not(:has([data-trailing-button]:hover)),
-	.__menu-item:not(:disabled):not([data-disabled])[data-active] {
+	.__menu-item:not(:disabled):not([data-disabled])[data-active],
+	.hover\:bg-token-bg-tertiary:hover {
 		background-color: var(--message-bg);
-		/* Active chat in the sidebar */
+		/* Active chat in the sidebar & settings buttons */
 	}
 }
