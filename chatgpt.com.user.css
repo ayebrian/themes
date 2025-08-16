@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           ChatGPT Customizable Colors
 @namespace      ayebrian
-@version        1.2.5
+@version        1.2.6
 @description    Customize the ChatGPT interface by selecting your preferred color palette for a personalized experience.
 @author         ayebrian
 @homepageURL    https://github.com/ayebrian/themes
@@ -251,9 +251,9 @@
 		/* inherit GPT version selection hover from style */
 	}
 
-	img.absolute.inset-0.m-0.h-full.w-full.mix-blend-darken.object-cover {
+	.mix-blend-darken {
 		mix-blend-mode: normal;
-		/* Remove unused and breaking blending for images from search in chats */
+		/* Fix unused and breaking blending for images from search in chats */
 	}
 
 	.__menu-item:not(:disabled):not([data-disabled]):active:not(:has([data-trailing-button]:hover)),
