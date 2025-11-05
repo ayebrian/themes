@@ -91,6 +91,10 @@
 
 	header#page-header {
 		background: none;
+
+    background-color: rgba(0,0,0,0.6) !important;
+    backdrop-filter: blur(10px);        
+    -webkit-backdrop-filter: blur(10px);
 		/* FIX: Overriden Chat Navbar Header to match the original design */
 	}
 
