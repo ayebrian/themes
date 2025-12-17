@@ -1,7 +1,7 @@
 /* ==UserStyle==
 @name           ChatGPT Customizable Colors
 @namespace      ayebrian
-@version        1.2.9
+@version        1.2.10
 @description    Customize the ChatGPT interface by selecting your preferred color palette for a personalized experience.
 @author         ayebrian
 @homepageURL    https://github.com/ayebrian/themes
@@ -46,17 +46,18 @@
 
 	.dark,
 	.light {
+		--bg-primary: var(--sidebar-bg);
+		--bg-elevated-secondary: var(--sidebar-bg);
 		--sidebar-surface-primary: var(--sidebar-bg);
 		--sidebar-surface-tertiary: var(--sidebar-surface-secondary);
 		--sidebar-surface-secondary: var(--sidebar-button-hover);
+		--surface-hover: var(--sidebar-button-hover);
+		--main-surface-tertiary: var(--scroll-bg);
+		--message-surface: var(--message-bg);
 		--main-surface-secondary: var(--sidebar-button-hover);
 		--main-surface-primary: var(--sidebar-button-hover);
 		--text-secondary: var(--text-secondary-color);
 		--text-tertiary: var(--text-tertiary-color);
-		--main-surface-tertiary: var(--scroll-bg);
-		--message-surface: var(--message-bg);
-		--bg-primary: var(--sidebar-bg);
-		--surface-hover: var(--sidebar-button-hover);
 		--theme-secondary-btn-bg: var(--primary-color);
 		--theme-mini-msg-bg: var(--message-bg);
 	}
@@ -83,16 +84,19 @@
 		color: var(--text-main)!important;
 	}
 
+	@media (width >=80rem) {
+		header#page-header {
+			background: none;
+			/* FIX: Overriden Chat Navbar Header to match the original design
+			December 2025: Compliant with the original OpenAI design */
+		}
+	}
 
 	div[data-radix-menu-content] {
 		background-color: var(--surface-hover);
 		/* FIX: Too Dark Model Selector */
 	}
 
-	header#page-header {
-		background: none;
-		/* FIX: Overriden Chat Navbar Header to match the original design */
-	}
 
 	.bg-token-main-surface-primary,
 	.relative.bg-token-main-surface-primary {
@@ -277,7 +281,13 @@
 	}
 
 	.content-fade:after {
-		display: none;
-		/* June 2025: Remove the new weird gradient that has no purpose. */
+		--bg-primary: var(--bg-main);
+		/* June 2025: Remove the new weird gradient that has no purpose.
+		December 2025: Chat Container uses this for fading of scroll */
+	}
+
+	button[style="view-transition-name: var(--vt-composer-speech-button);"] > svg {
+		fill: var(--bg-main);
+		/* December 2025 FIX: Voice Mode Icon Color Mismatch */
 	}
 }
