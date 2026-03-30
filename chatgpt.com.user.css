@@ -1,7 +1,7 @@
-/* ==UserStyle==
+		/* ==UserStyle==
 @name           ChatGPT Customizable Colors
 @namespace      ayebrian
-@version        1.2.10
+@version        1.2.11
 @description    Customize the ChatGPT interface by selecting your preferred color palette for a personalized experience.
 @author         ayebrian
 @homepageURL    https://github.com/ayebrian/themes
@@ -11,236 +11,244 @@
 
 
 ==/UserStyle== */
-@-moz-document domain("chatgpt.com") {
-	:root.dark {
-		/*--primary-color: #2e3e61; Old color*/
-		--bg-main: color-mix(in srgb, var(--primary-color) 30%, #000 80%);
-		--sidebar-bg: color-mix(in srgb, var(--primary-color) 20%, #000);
-		--sidebar-button-hover: color-mix(in srgb, var(--primary-color), #000);
-		--text-main: color-mix(in srgb, var(--primary-color) 30%, #fff);
-		--text-tertiary-color: color-mix(in srgb, var(--primary-color) 75%, #fff);
-		--text-secondary-color: color-mix(in srgb, var(--primary-color) 66%, #fff);
-		--border-color: color-mix(in srgb, var(--primary-color) 20%, #ffffff08);
-		--border-enabled-color: color-mix(in srgb, var(--primary-color) 50%, #ffffff80);
-		--message-bg: color-mix(in srgb, var(--primary-color) 20%, #ffffff08);
-		--scroll-bg: color-mix(in srgb, var(--primary-color) 70%, #797979);
-		--disabled-button-bg: color-mix(in srgb, var(--primary-color) 25%, #fff 15%);
-		--enabled-button-bg: color-mix(in srgb, var(--primary-color) 100%, #000 5%);
-	}
+		@-moz-document domain("chatgpt.com") {
+			:root.dark {
+				/*--primary-color: #2e3e61; Old color*/
+				--bg-main: color-mix(in srgb, var(--primary-color) 30%, #000 80%);
+				--sidebar-bg: color-mix(in srgb, var(--primary-color) 20%, #000);
+				--sidebar-button-hover: color-mix(in srgb, var(--primary-color), #000);
+				--text-main: color-mix(in srgb, var(--primary-color) 30%, #fff);
+				--text-tertiary-color: color-mix(in srgb, var(--primary-color) 75%, #fff);
+				--text-secondary-color: color-mix(in srgb, var(--primary-color) 66%, #fff);
+				--border-color: color-mix(in srgb, var(--primary-color) 20%, #ffffff08);
+				--border-enabled-color: color-mix(in srgb, var(--primary-color) 50%, #ffffff80);
+				--message-bg: color-mix(in srgb, var(--primary-color) 20%, #ffffff08);
+				--scroll-bg: color-mix(in srgb, var(--primary-color) 70%, #797979);
+				--disabled-button-bg: color-mix(in srgb, var(--primary-color) 25%, #fff 15%);
+				--enabled-button-bg: color-mix(in srgb, var(--primary-color) 100%, #000 5%);
+				--scroll-fade-top: linear-gradient( 180deg,
+				color-mix(in srgb, var(--sidebar-bg) 0%, transparent) 0%,
+				color-mix(in srgb, var(--sidebar-bg) 28%, transparent) 56%,
+				color-mix(in srgb, var(--sidebar-bg) 62%, transparent) 84%,
+				var(--sidebar-bg) 100%);
+			}
 
-	:root.light {
-		--primary-color: var(--primary-color-light);
-		--bg-main: color-mix(in srgb, var(--primary-color) 20%, #fff 80%);
-		--sidebar-bg: color-mix(in srgb, var(--primary-color) 35%, #fff 75%);
-		--sidebar-button-hover: color-mix(in srgb, var(--primary-color), #fff);
-		--text-main: color-mix(in srgb, var(--primary-color) 30%, #000);
-		--text-tertiary-color: color-mix(in srgb, var(--primary-color) 75%, #000);
-		--border-color: color-mix(in srgb, var(--primary-color) 20%, #ffffff08);
-		--border-enabled-color: color-mix(in srgb, var(--primary-color) 50%, #00000080);
-		--message-bg: color-mix(in srgb, var(--primary-color) 20%, #ffffff08);
-		--scroll-bg: color-mix(in srgb, var(--primary-color) 70%, #fff);
-		--disabled-button-bg: color-mix(in srgb, var(--primary-color) 25%, #000 5%);
-		--enabled-button-bg: color-mix(in srgb, var(--primary-color) 100%, #000 5%);
-		--menu-item-highlighted: color-mix(in srgb, var(--primary-color) 100%, #fff 51%);
-	}
+			:root.light {
+				--primary-color: var(--primary-color-light);
+				--bg-main: color-mix(in srgb, var(--primary-color) 20%, #fff 80%);
+				--sidebar-bg: color-mix(in srgb, var(--primary-color) 35%, #fff 75%);
+				--sidebar-button-hover: color-mix(in srgb, var(--primary-color), #fff);
+				--text-main: color-mix(in srgb, var(--primary-color) 30%, #000);
+				--text-tertiary-color: color-mix(in srgb, var(--primary-color) 75%, #000);
+				--border-color: color-mix(in srgb, var(--primary-color) 20%, #ffffff08);
+				--border-enabled-color: color-mix(in srgb, var(--primary-color) 50%, #00000080);
+				--message-bg: color-mix(in srgb, var(--primary-color) 20%, #ffffff08);
+				--scroll-bg: color-mix(in srgb, var(--primary-color) 70%, #fff);
+				--disabled-button-bg: color-mix(in srgb, var(--primary-color) 25%, #000 5%);
+				--enabled-button-bg: color-mix(in srgb, var(--primary-color) 100%, #000 5%);
+				--menu-item-highlighted: color-mix(in srgb, var(--primary-color) 100%, #fff 51%);
+				--scroll-fade-top: linear-gradient( 180deg,
+				color-mix(in srgb, var(--sidebar-bg) 0%, transparent) 33.621%,
+				var(--sidebar-bg) 114.66%);
+			}
 
-	.dark,
-	.light {
-		--bg-primary: var(--sidebar-bg);
-		--bg-elevated-secondary: var(--sidebar-bg);
-		--sidebar-surface-primary: var(--sidebar-bg);
-		--sidebar-surface-tertiary: var(--sidebar-surface-secondary);
-		--sidebar-surface-secondary: var(--sidebar-button-hover);
-		--surface-hover: var(--sidebar-button-hover);
-		--main-surface-tertiary: var(--scroll-bg);
-		--message-surface: var(--message-bg);
-		--main-surface-secondary: var(--sidebar-button-hover);
-		--main-surface-primary: var(--sidebar-button-hover);
-		--text-secondary: var(--text-secondary-color);
-		--text-tertiary: var(--text-tertiary-color);
-		--theme-secondary-btn-bg: var(--primary-color);
-		--theme-mini-msg-bg: var(--message-bg);
-	}
+			.dark,
+			.light {
+				--bg-primary: var(--sidebar-bg);
+				--bg-elevated-secondary: var(--sidebar-bg);
+				--sidebar-surface-primary: var(--sidebar-bg);
+				--sidebar-surface-tertiary: var(--sidebar-surface-secondary);
+				--sidebar-surface-secondary: var(--sidebar-button-hover);
+				--surface-hover: var(--sidebar-button-hover);
+				--main-surface-tertiary: var(--scroll-bg);
+				--message-surface: var(--message-bg);
+				--main-surface-secondary: var(--sidebar-button-hover);
+				--main-surface-primary: var(--sidebar-button-hover);
+				--text-secondary: var(--text-secondary-color);
+				--text-tertiary: var(--text-tertiary-color);
+				--theme-secondary-btn-bg: var(--primary-color);
+				--theme-mini-msg-bg: var(--message-bg);
+			}
 
-	*,
-	.dark:hover,
-	.light:hover {
-		scrollbar-color: var(--scroll-bg) transparent;
-	}
+			*,
+			.dark:hover,
+			.light:hover {
+				scrollbar-color: var(--scroll-bg) transparent;
+			}
 
-	.__menu-item {
-		/* Colors for hover at least for buttons in the sidebar */
-		--menu-item-open: var(--message-bg);
-		--menu-item-highlighted: var(--message-bg);
-		--menu-item-open: var(--message-bg);
-		--menu-item-hover: var(--message-bg);
-	}
+			.__menu-item {
+				/* Colors for hover at least for buttons in the sidebar */
+				--menu-item-open: var(--message-bg);
+				--menu-item-highlighted: var(--message-bg);
+				--menu-item-open: var(--message-bg);
+				--menu-item-hover: var(--message-bg);
+			}
 
-	body,
-	html,
-	html:not(.screen-arch),
-	html:not(.screen-arch) body {
-		background-color: var(--bg-main);
-		color: var(--text-main)!important;
-	}
+			body,
+			html,
+			html:not(.screen-arch),
+			html:not(.screen-arch) body {
+				background-color: var(--bg-main);
+				color: var(--text-main)!important;
+			}
 
-	@media (width >=80rem) {
-		header#page-header {
-			background: none;
-			/* FIX: Overriden Chat Navbar Header to match the original design
+			@media (width >=80rem) {
+				header#page-header {
+					background: none;
+					/* FIX: Overriden Chat Navbar Header to match the original design
 			December 2025: Compliant with the original OpenAI design */
-		}
-	}
+				}
+			}
 
-	div[data-radix-menu-content] {
-		background-color: var(--surface-hover);
-		/* FIX: Too Dark Model Selector */
-	}
-
-
-	.bg-token-main-surface-primary,
-	.relative.bg-token-main-surface-primary {
-		background-color: var(--bg-main);
-		/* Upgrade your Plan Page & Model Selector BG */
-	}
-
-	.bg-token-sidebar-surface-primary {
-		background-color: var(--sidebar-bg);
-	}
-
-	.from-token-sidebar-surface-primary {
-		--tw-gradient-from: var(--sidebar-bg);
-	}
-
-	.from-token-main-surface-primary,
-	.dark\:from-gray-800:is(.dark *) {
-		--tw-gradient-from: var(--bg-main);
-	}
-
-	.bg-token-sidebar-surface-secondary {
-		background-color: var(--sidebar-button-hover);
-	}
-
-	.dark\:border-gray-800:is(.dark *) {
-		border-color: var(--border-color);
-	}
-
-	@media (hover: hover) and (pointer: fine) {
-		.dark\:hover\:bg-token-main-surface-secondary:hover:is(.dark *),
-		.dark\:md\:hover\:bg-gray-700:hover:is(.dark *) {
-			background-color: var(--sidebar-surface-secondary);
-		}
-	}
-
-	@media (hover: hover) and (pointer: fine) {
-		.hover\:bg-token-main-surface-secondary:hover {
-			background-color: var(--sidebar-surface-secondary);
-		}
-	}
-
-	@media (hover: hover) and (pointer: fine) {
-		.dark\:can-hover\:hover\:bg-gray-700:hover:is(.dark *) {
-			background-color: var(--enabled-button-bg);
-			color: var(--text-main);
-		}
-	}
-
-	.dark\:bg-token-main-surface-secondary:is(.dark *),
-	.dark\:bg-\[\#303030\]:is(.dark *) {
-		background-color: var(--main-surface-secondary);
-	}
-
-	.shadow-short:not(:is(.dark *)) {
-		background-color: #fff;
-		/* Light mode text input */
-	}
-
-	/* message input */
-	.dark svg {
-		color: var(--text-main)!important;
-	}
-
-	:is(.dark, .light) .dark\:disabled\:text-token-main-surface-secondary:disabled {
-		background-color: var(--disabled-button-bg);
-	}
-
-	.dark\:bg-white:is(.dark *) {
-		background-color: var(--enabled-button-bg);
-		/* Deprecated */
-	}
-
-	.btn-green {
-		background-color: var(--primary-color);
-	}
-
-	.btn-secondary {
-		background-color: var(--bg-main);
-	}
+			div[data-radix-menu-content] {
+				background-color: var(--surface-hover);
+				/* FIX: Too Dark Model Selector */
+			}
 
 
-	button.btn.relative.btn-secondary.btn-small {
-		background-color: var(--enabled-button-bg);
-	}
+			.bg-token-main-surface-primary,
+			.relative.bg-token-main-surface-primary {
+				background-color: var(--bg-main);
+				/* Upgrade your Plan Page & Model Selector BG */
+			}
 
-	@media (hover: hover) and (pointer: fine) {
-		.btn-green:hover {
-			background-color: var(--primary-color);
-			opacity: 0.7;
-		}
-	}
+			.bg-token-sidebar-surface-primary {
+				background-color: var(--sidebar-bg);
+			}
+
+			.from-token-sidebar-surface-primary {
+				--tw-gradient-from: var(--sidebar-bg);
+			}
+
+			.from-token-main-surface-primary,
+			.dark\:from-gray-800:is(.dark *) {
+				--tw-gradient-from: var(--bg-main);
+			}
+
+			.bg-token-sidebar-surface-secondary {
+				background-color: var(--sidebar-button-hover);
+			}
+
+			.dark\:border-gray-800:is(.dark *) {
+				border-color: var(--border-color);
+			}
+
+			@media (hover: hover) and (pointer: fine) {
+				.dark\:hover\:bg-token-main-surface-secondary:hover:is(.dark *),
+				.dark\:md\:hover\:bg-gray-700:hover:is(.dark *) {
+					background-color: var(--sidebar-surface-secondary);
+				}
+			}
+
+			@media (hover: hover) and (pointer: fine) {
+				.hover\:bg-token-main-surface-secondary:hover {
+					background-color: var(--sidebar-surface-secondary);
+				}
+			}
+
+			@media (hover: hover) and (pointer: fine) {
+				.dark\:can-hover\:hover\:bg-gray-700:hover:is(.dark *) {
+					background-color: var(--enabled-button-bg);
+					color: var(--text-main);
+				}
+			}
+
+			.dark\:bg-token-main-surface-secondary:is(.dark *),
+			.dark\:bg-\[\#303030\]:is(.dark *) {
+				background-color: var(--main-surface-secondary);
+			}
+
+			.shadow-short:not(:is(.dark *)) {
+				background-color: #fff;
+				/* Light mode text input */
+			}
+
+			/* message input */
+			.dark svg {
+				color: var(--text-main)!important;
+			}
+
+			:is(.dark, .light) .dark\:disabled\:text-token-main-surface-secondary:disabled {
+				background-color: var(--disabled-button-bg);
+			}
+
+			.dark\:bg-white:is(.dark *) {
+				background-color: var(--enabled-button-bg);
+				/* Deprecated */
+			}
+
+			.btn-green {
+				background-color: var(--primary-color);
+			}
+
+			.btn-secondary {
+				background-color: var(--bg-main);
+			}
 
 
-	.bg-token-main-surface-tertiary {
-		background-color: var(--border-color);
-	}
+			button.btn.relative.btn-secondary.btn-small {
+				background-color: var(--enabled-button-bg);
+			}
 
-	.radix-state-open\:bg-token-main-surface-secondary[data-state=open] {
-		background-color: var(--message-bg);
-	}
-
-	.bg-token-main-surface-secondary {
-		background-color: var(--sidebar-button-hover);
-	}
-
-	@media (min-width: 768px) {
-		.md\:radix-state-active\:bg-token-main-surface-secondary[data-state=active] {
-			background-color: var(--sidebar-button-hover);
-		}
-	}
+			@media (hover: hover) and (pointer: fine) {
+				.btn-green:hover {
+					background-color: var(--primary-color);
+					opacity: 0.7;
+				}
+			}
 
 
-	.dark\:radix-state-checked\:bg-green-600[data-state=checked]:is(.dark *) {
-		background-color: var(--primary-color);
-		border-color: var(--border-enabled-color);
-	}
+			.bg-token-main-surface-tertiary {
+				background-color: var(--border-color);
+			}
 
-	/* QUESTION: Remove in the future if doesn't break anything
+			.radix-state-open\:bg-token-main-surface-secondary[data-state=open] {
+				background-color: var(--message-bg);
+			}
+
+			.bg-token-main-surface-secondary {
+				background-color: var(--sidebar-button-hover);
+			}
+
+			@media (min-width: 768px) {
+				.md\:radix-state-active\:bg-token-main-surface-secondary[data-state=active] {
+					background-color: var(--sidebar-button-hover);
+				}
+			}
+
+
+			.dark\:radix-state-checked\:bg-green-600[data-state=checked]:is(.dark *) {
+				background-color: var(--primary-color);
+				border-color: var(--border-enabled-color);
+			}
+
+			/* QUESTION: Remove in the future if doesn't break anything
 	.btn-primary:is(.dark *) {
 		background-color: var(--primary-color);
 		color: var(--text-main)!important;
 	20.05.25: Seems it's being used by the share button modal
 	}*/
-	:is(.dark, .light) .dark\:bg-gray-700 {
-		background-color: var(--message-bg);
-	}
+			:is(.dark, .light) .dark\:bg-gray-700 {
+				background-color: var(--message-bg);
+			}
 
-	@media (hover: hover) and (pointer: fine) {
-		.btn-primary:hover:is(.dark *) {
-			background-color: var(--scroll-bg);
-		}
-	}
+			@media (hover: hover) and (pointer: fine) {
+				.btn-primary:hover:is(.dark *) {
+					background-color: var(--scroll-bg);
+				}
+			}
 
-	:is(.dark, .light) .dark\:prose-invert :where(code):not(:where([class~=not-prose] *)):not([class*="whitespace-pre!"]) {
-		background-color: var(--disabled-button-bg);
-		/* Codeblock */
-	}
+			:is(.dark, .light) .dark\:prose-invert :where(code):not(:where([class~=not-prose] *)):not([class*="whitespace-pre!"]) {
+				background-color: var(--disabled-button-bg);
+				/* Codeblock */
+			}
 
-	.bg-token-bg-primary {
-		background-color: transparent;
-		/* FIX: Explore GPTs search input bg */
-	}
+			.bg-token-bg-primary {
+				background-color: transparent;
+				/* FIX: Explore GPTs search input bg */
+			}
 
-	/* LATER: Add the toggle to switch between 2 button styles(Color, White)
+			/* LATER: Add the toggle to switch between 2 button styles(Color, White)
 	button[inputstate="default"] {
 		background: #fff!important;
 	}
@@ -248,46 +256,53 @@
 		color:  var(--sidebar-bg)!important;
 	}
 	*/
-	[dir=ltr] .horzScrollShadows {
-		background: 0;
-		/* FIX: Table with unexpected background */
-	}
+			[dir=ltr] .horzScrollShadows {
+				background: 0;
+				/* FIX: Table with unexpected background */
+			}
 
-	:is(.dark, .light) .dark\:bg-token-main-surface-secondary {
-		background: var(--sidebar-button-hover);
-		/* Search hover on chats */
-	}
+			:is(.dark, .light) .dark\:bg-token-main-surface-secondary {
+				background: var(--sidebar-button-hover);
+				/* Search hover on chats */
+			}
 
-	.bg-token-bg-elevated-secondary {
-		background-color: var(--sidebar-bg);
-		/* Sidebar BG for Chats and Settings */
-	}
+			.bg-token-bg-elevated-secondary {
+				background-color: var(--sidebar-bg);
+				/* Sidebar BG for Chats and Settings */
+			}
 
-	.\[--menu-item-highlighted\:\#f5f5f5\] {
-		--menu-item-highlighted: inherit;
-		/* inherit GPT version selection hover from style */
-	}
+			.\[--menu-item-highlighted\:\#f5f5f5\] {
+				--menu-item-highlighted: inherit;
+				/* inherit GPT version selection hover from style */
+			}
 
-	.mix-blend-darken {
-		mix-blend-mode: normal;
-		/* Fix unused and breaking blending for images from search in chats */
-	}
+			.mix-blend-darken {
+				mix-blend-mode: normal;
+				/* Fix unused and breaking blending for images from search in chats */
+			}
 
-	.__menu-item:not(:disabled):not([data-disabled]):active:not(:has([data-trailing-button]:hover)),
-	.__menu-item:not(:disabled):not([data-disabled])[data-active],
-	.hover\:bg-token-bg-tertiary:hover {
-		background-color: var(--message-bg);
-		/* Active chat in the sidebar & settings buttons */
-	}
+			.__menu-item:not(:disabled):not([data-disabled]):active:not(:has([data-trailing-button]:hover)),
+			.__menu-item:not(:disabled):not([data-disabled])[data-active],
+			.hover\:bg-token-bg-tertiary:hover {
+				background-color: var(--message-bg);
+				/* Active chat in the sidebar & settings buttons */
+			}
 
-	.content-fade:after {
-		--bg-primary: var(--bg-main);
-		/* June 2025: Remove the new weird gradient that has no purpose.
+			.content-fade:after {
+				--bg-primary: var(--bg-main);
+				/* June 2025: Remove the new weird gradient that has no purpose.
 		December 2025: Chat Container uses this for fading of scroll */
-	}
+			}
 
-	button[style="view-transition-name: var(--vt-composer-speech-button);"] > svg {
-		fill: var(--bg-main);
-		/* December 2025 FIX: Voice Mode Icon Color Mismatch */
-	}
-}
+			button[style="view-transition-name: var(--vt-composer-speech-button);"] > svg {
+				fill: var(--bg-main);
+				/* December 2025 FIX: Voice Mode Icon Color Mismatch */
+			}
+
+			.group-data-scrolled-from-end\/scrollport\:opacity-100 > div[aria-hidden="true"] {
+				background: var(--scroll-fade-top) !important;
+				margin-top: 0.5px;
+				/* Otherwise missing gradient on that part */
+				/* March 2026: The shadow for list of chats */
+			}
+		}
