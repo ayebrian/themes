@@ -1,7 +1,7 @@
 		/* ==UserStyle==
 @name           ChatGPT Customizable Colors
 @namespace      ayebrian
-@version        1.2.11
+@version        1.2.12
 @description    Customize the ChatGPT interface by selecting your preferred color palette for a personalized experience.
 @author         ayebrian
 @homepageURL    https://github.com/ayebrian/themes
@@ -56,6 +56,7 @@
 			.light {
 				--bg-primary: var(--sidebar-bg);
 				--bg-elevated-secondary: var(--sidebar-bg);
+				--bg-secondary-surface: var(--sidebar-bg);
 				--sidebar-surface-primary: var(--sidebar-bg);
 				--sidebar-surface-tertiary: var(--sidebar-surface-secondary);
 				--sidebar-surface-secondary: var(--sidebar-button-hover);
@@ -68,6 +69,7 @@
 				--text-tertiary: var(--text-tertiary-color);
 				--theme-secondary-btn-bg: var(--primary-color);
 				--theme-mini-msg-bg: var(--message-bg);
+				
 			}
 
 			*,
@@ -305,4 +307,10 @@
 				/* Otherwise missing gradient on that part */
 				/* March 2026: The shadow for list of chats */
 			}
+
+			[class="bg-token-bg-primary dark:bg-token-bg-elevated-primary corner-superellipse/1.1 cursor-text overflow-clip bg-clip-padding p-2.5 contain-inline-size motion-safe:transition-colors motion-safe:duration-200 motion-safe:ease-in-out grid grid-cols-[auto_1fr_auto] [grid-template-areas:'header_header_header'_'leading_primary_trailing'_'._footer_.'] group-data-expanded/composer:[grid-template-areas:'header_header_header'_'primary_primary_primary'_'leading_footer_trailing'] shadow-short-composer"] {
+				background-color: var(--sidebar-button-hover);
+			}
+
+			/* Chat Input Container */
 		}
