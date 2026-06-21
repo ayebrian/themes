@@ -250,7 +250,7 @@
 
 			:is(.dark, .light) .dark\:prose-invert :where(code):not(:where([class~=not-prose] *)):not(:where(pre *)) {
 				background-color: var(--disabled-button-bg);
-				/* Codeblock*/ 
+				/* Codeblock */ 
 				/* FIX: Exclude all <pre> descendants so block lines keep ChatGPT's 
 					transparent reset; old whitespace-pre! exclusion missed per-line <code> nodes */
 			}
