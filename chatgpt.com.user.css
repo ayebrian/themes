@@ -248,9 +248,11 @@
 				}
 			}
 
-			:is(.dark, .light) .dark\:prose-invert :where(code):not(:where([class~=not-prose] *)):not([class*="whitespace-pre!"]) {
+			:is(.dark, .light) .dark\:prose-invert :where(code):not(:where([class~=not-prose] *)):not(:where(pre *)) {
 				background-color: var(--disabled-button-bg);
-				/* Codeblock */
+				/* Codeblock*/ 
+				/* FIX: Exclude all <pre> descendants so block lines keep ChatGPT's 
+					transparent reset; old whitespace-pre! exclusion missed per-line <code> nodes */
 			}
 
 			.bg-token-bg-primary {
@@ -333,5 +335,17 @@
 			div[class="flex flex-row gap-2"] > button[aria-label] {
 				background: var(--primary-color);
 				/* April 2026: Voice Mode "End" button */
+			}
+			
+			@media (hover: hover) and (pointer: fine) {
+    			button.__composer-pill--neutral:hover {
+        			background-color: var(--interactive-bg-secondary-hover);
+					/* Composer neutral pills (model selector) - match the icon-button hover */
+    			}
+			}
+
+			button.__composer-pill--neutral[data-state="open"],
+			button.__composer-pill--neutral[data-is-open] {
+   				background-color: var(--interactive-bg-secondary-hover);
 			}
 		}
