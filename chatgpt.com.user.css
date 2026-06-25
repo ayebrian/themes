@@ -346,6 +346,6 @@
 
 			button.__composer-pill--neutral[data-state=open],
 			button.__composer-pill--neutral[data-is-open] {
-   				background-color: var(--interactive-bg-secondary-hover);
+				background-color: var(--interactive-bg-secondary-hover);
 			}
 		}
