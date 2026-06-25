@@ -337,12 +337,12 @@
 				/* April 2026: Voice Mode "End" button */
 			}
 			
-				@media (hover: hover) and (pointer: fine) {
-					button.__composer-pill--neutral:hover {
-						background-color: var(--interactive-bg-secondary-hover);
-						/* Composer neutral pills (model selector) - match the icon-button hover */
-					}
+			@media (hover: hover) and (pointer: fine) {
+				button.__composer-pill--neutral:hover {
+					background-color: var(--interactive-bg-secondary-hover);
+					/* Composer neutral pills (model selector) - match the icon-button hover */
 				}
+			}
 
 			button.__composer-pill--neutral[data-state=open],
 			button.__composer-pill--neutral[data-is-open] {
