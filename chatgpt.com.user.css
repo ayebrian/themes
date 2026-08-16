@@ -1,13 +1,14 @@
 		/* ==UserStyle==
 @name           ChatGPT Customizable Colors
 @namespace      ayebrian
-@version        1.3.1
+@version        1.4.0
 @description    Customize the ChatGPT interface by selecting your preferred color palette for a personalized experience.
 @author         ayebrian
 @homepageURL    https://github.com/ayebrian/themes
 
 @var color primary-color "Accent color (dark)" "#4d5b6f"
 @var color primary-color-light "Accent color (light)" "#799bbf"
+@var checkbox dynamic-user-message "Dynamic user message color" 1
 
 
 ==/UserStyle== */
@@ -53,9 +54,12 @@
 			}
 
 			.dark,
-			.light {
+			.light,
+			:is(.dark, .light) body {
 				--bg-primary: var(--sidebar-bg);
+				--bg-elevated-primary: var(--sidebar-button-hover);
 				--bg-elevated-secondary: var(--sidebar-bg);
+				--bg-tooltip: var(--sidebar-button-hover);
 				--bg-secondary-surface: var(--sidebar-bg);
 				--sidebar-surface-primary: var(--sidebar-bg);
 				--sidebar-surface-tertiary: var(--sidebar-surface-secondary);
@@ -68,7 +72,16 @@
 				--text-secondary: var(--text-secondary-color);
 				--text-tertiary: var(--text-tertiary-color);
 				--theme-secondary-btn-bg: var(--primary-color);
+				--theme-submit-btn-bg: var(--primary-color);
 				--theme-mini-msg-bg: var(--message-bg);
+				--interactive-bg-secondary-hover: var(--message-bg);
+			}
+
+			.user-message-bubble-color {
+				background-color: color-mix( in srgb,
+				var(--theme-user-msg-bg) calc((1 - var(--dynamic-user-message)) * 100%),
+				var(--primary-color) calc(var(--dynamic-user-message) * 100%)) !important;
+				/* Checkbox: dynamic accent when enabled, native ChatGPT blue when disabled */
 			}
 
 			*,
@@ -130,8 +143,7 @@
 				--tw-gradient-from: var(--sidebar-bg);
 			}
 
-			.from-token-main-surface-primary,
-			.dark\:from-gray-800:is(.dark *) {
+			.from-token-main-surface-primary {
 				--tw-gradient-from: var(--bg-main);
 			}
 
@@ -139,13 +151,8 @@
 				background-color: var(--sidebar-button-hover);
 			}
 
-			.dark\:border-gray-800:is(.dark *) {
-				border-color: var(--border-color);
-			}
-
 			@media (hover: hover) and (pointer: fine) {
-				.dark\:hover\:bg-token-main-surface-secondary:hover:is(.dark *),
-				.dark\:md\:hover\:bg-gray-700:hover:is(.dark *) {
+				.dark\:hover\:bg-token-main-surface-secondary:hover:is(.dark *) {
 					background-color: var(--sidebar-surface-secondary);
 				}
 			}
@@ -153,13 +160,6 @@
 			@media (hover: hover) and (pointer: fine) {
 				.hover\:bg-token-main-surface-secondary:hover {
 					background-color: var(--sidebar-surface-secondary);
-				}
-			}
-
-			@media (hover: hover) and (pointer: fine) {
-				.dark\:can-hover\:hover\:bg-gray-700:hover:is(.dark *) {
-					background-color: var(--enabled-button-bg);
-					color: var(--text-main);
 				}
 			}
 
@@ -176,10 +176,6 @@
 			/* message input */
 			.dark svg {
 				color: var(--text-main)!important;
-			}
-
-			:is(.dark, .light) .dark\:disabled\:text-token-main-surface-secondary:disabled {
-				background-color: var(--disabled-button-bg);
 			}
 
 			.dark\:bg-white:is(.dark *) {
@@ -227,11 +223,6 @@
 			}
 
 
-			.dark\:radix-state-checked\:bg-green-600[data-state=checked]:is(.dark *) {
-				background-color: var(--primary-color);
-				border-color: var(--border-enabled-color);
-			}
-
 			/* QUESTION: Remove in the future if doesn't break anything
 	.btn-primary:is(.dark *) {
 		background-color: var(--primary-color);
@@ -250,7 +241,7 @@
 
 			:is(.dark, .light) .dark\:prose-invert :where(code):not(:where([class~=not-prose] *)):not(:where(pre *)) {
 				background-color: var(--disabled-button-bg);
-				/* Codeblock */ 
+				/* Codeblock */
 				/* FIX: Exclude all <pre> descendants so block lines keep ChatGPT's 
 					transparent reset; old whitespace-pre! exclusion missed per-line <code> nodes */
 			}
@@ -268,11 +259,6 @@
 		color:  var(--sidebar-bg)!important;
 	}
 	*/
-			[dir=ltr] .horzScrollShadows {
-				background: 0;
-				/* FIX: Table with unexpected background */
-			}
-
 			:is(.dark, .light) .dark\:bg-token-main-surface-secondary {
 				background: var(--sidebar-button-hover);
 				/* Search hover on chats */
@@ -281,11 +267,6 @@
 			.bg-token-bg-elevated-secondary {
 				background-color: var(--sidebar-bg);
 				/* Sidebar BG for Chats and Settings */
-			}
-
-			.\[--menu-item-highlighted\:\#f5f5f5\] {
-				--menu-item-highlighted: inherit;
-				/* inherit GPT version selection hover from style */
 			}
 
 			.mix-blend-darken {
@@ -308,17 +289,14 @@
 				April 2026: Fixed again */
 			}
 
-			button[style="view-transition-name: var(--vt-composer-speech-button);"] > svg {
-				color: var(--bg-main)!important;
-				/* December 2025 FIX: Voice Mode Icon Color Mismatch 
-				April 2026: Finally fixed the bg mismatch */
+			:is(.dark, .light) #thread-bottom-container::after {
+				background-color: var(--bg-main) !important;
+				/* August 2026: New composer footer fade must blend into the themed page */
 			}
 
-			.group-data-scrolled-from-end\/scrollport\:opacity-100 > div[aria-hidden="true"] {
-				background: var(--scroll-fade-top) !important;
-				margin-top: 0.5px;
-				/* Otherwise missing gradient on that part */
-				/* March 2026: The shadow for list of chats */
+			:is(.dark, .light) [class*="--vt-disclaimer"] .bg-token-main-surface-primary {
+				--main-surface-primary: var(--bg-main) !important;
+				/* Disclaimer pill shadow follows the dynamic page background instead of black */
 			}
 
 			form.group\/composer.w-full > div > div {
@@ -332,11 +310,40 @@
 				/* April 2026: Finally fixed the settings missing bg */
 			}
 
+			#modal-settings [role="dialog"] div:has(> [data-settings-tab-list]) {
+				background-color: var(--sidebar-bg);
+				/* Settings sidebar */
+			}
+
+			#modal-settings [data-settings-tab-list] [role="tab"][data-state="active"],
+			#modal-settings [data-settings-tab-list] [role="tab"][data-state="inactive"]:hover {
+				background-color: var(--message-bg) !important;
+				/* Settings active and hover states */
+			}
+
+			#modal-settings button[data-testid="close-button"] {
+				background-color: transparent !important;
+			}
+
+			#modal-settings button[data-testid="close-button"]:hover {
+				background-color: var(--message-bg) !important;
+			}
+
+			:is(.dark, .light) button[role="switch"][data-state="checked"] {
+				background-color: var(--primary-color) !important;
+				/* Dynamic checked toggle color */
+			}
+
+			:is(.dark, .light) :where([role="dialog"], [role="alertdialog"]) {
+				background-color: var(--bg-main) !important;
+				/* August 2026: Dynamic background for modal and popup content */
+			}
+
 			div[class="flex flex-row gap-2"] > button[aria-label] {
 				background: var(--primary-color);
 				/* April 2026: Voice Mode "End" button */
 			}
-			
+
 			@media (hover: hover) and (pointer: fine) {
 				button.__composer-pill--neutral:hover {
 					background-color: var(--interactive-bg-secondary-hover);
@@ -348,5 +355,37 @@
 			button.__composer-pill--neutral[data-is-open] {
 				background-color: var(--interactive-bg-secondary-hover);
 				/* Composer neutral pills */
+			}
+
+			/* August 2026: Chat/Work selector moved to a new pill component.
+			   Its track uses a hard-coded dark color, while the selected thumb
+			   still carries the legacy bg-token-bg-primary class reset above. */
+			:is(.dark, .light) header#page-header [role="radiogroup"][aria-label="Select chat surface"] > :first-child {
+				background-color: var(--sidebar-bg);
+			}
+
+			:is(.dark, .light) header#page-header [role="radiogroup"][aria-label="Select chat surface"] .bg-token-bg-primary {
+				background-color: var(--sidebar-button-hover);
+			}
+
+			:is(.dark, .light) .bg-surface-primary {
+				background-color: var(--bg-main) !important;
+				/* August 2026: Suggested actions below the composer */
+			}
+
+			:is(.dark, .light) .bg-surface-primary li[data-selected] > button:first-of-type {
+				background-color: var(--message-bg) !important;
+				/* Suggested action hover: use the customizable accent instead of gray */
+			}
+
+			:is(.dark, .light) #conversation-header-actions.translucent-surface {
+				background-color: transparent !important;
+				backdrop-filter: none;
+				/* Temporary chat container should not draw a square behind the button */
+			}
+
+			:is(.dark, .light) #conversation-header-actions button[aria-label="Temporary chat"]:hover {
+				background-color: var(--surface-hover) !important;
+				/* Keep the circular hover tied to the customizable accent */
 			}
 		}
