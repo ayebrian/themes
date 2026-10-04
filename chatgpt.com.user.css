@@ -1,391 +1,279 @@
-		/* ==UserStyle==
+/* ==UserStyle==
 @name           ChatGPT Customizable Colors
 @namespace      ayebrian
-@version        1.4.0
+@version        2.0.0
 @description    Customize the ChatGPT interface by selecting your preferred color palette for a personalized experience.
 @author         ayebrian
 @homepageURL    https://github.com/ayebrian/themes
 
 @var color primary-color "Accent color (dark)" "#4d5b6f"
 @var color primary-color-light "Accent color (light)" "#799bbf"
+@var range tint "Background tint strength (0 = neutral gray, 1 = default)" [1, 0, 1.5, 0.1]
+@var checkbox tinted-text "Tint text with the accent color" 1
+@var select sidebar-depth "Sidebar" {"same:Same as chat": "0", "darker:Darker*": "1", "darkest:Much darker": "2"}
+@var checkbox oled "OLED black background (dark mode)" 0
 @var checkbox dynamic-user-message "Dynamic user message color" 1
+@var select user-message-source "User message color" {"accent:Accent*": "0", "custom:Custom color below": "1"}
+@var color user-message-color "Custom user message color" "#5f4d6f"
+@var select send-button "Send and voice buttons" {"neutral:Neutral*": "0", "accent:Accent color": "1"}
+@var select chat-width "Chat width" {"default:Default*": "0px", "wide:Wide": "56rem", "wider:Wider": "72rem", "full:Full width": "100%"}
+@var range corner-radius "Corner roundness (0 = square, 1 = default)" [1, 0, 1, 0.1]
+@var text ui-font "Font family (native = ChatGPT default)" "native"
+@var text code-font "Code font family (native = ChatGPT default)" "native"
+@var select hide-disclaimer "Disclaimer under the composer" {"show:Show*": "initial", "hide:Hide": "hidden"}
+@var select hide-mode-toggle "Chat / Work switch" {"show:Show*": "initial", "hide:Hide": "hidden"}
+@var select hide-suggestions "Suggestions under the composer" {"show:Show*": "initial", "hide:Hide": "hidden"}
 
 
 ==/UserStyle== */
-		@-moz-document domain("chatgpt.com") {
-			:root.dark {
-				/*--primary-color: #2e3e61; Old color*/
-				--bg-main: color-mix(in srgb, var(--primary-color) 30%, #000 80%);
-				--sidebar-bg: color-mix(in srgb, var(--primary-color) 20%, #000);
-				--sidebar-button-hover: color-mix(in srgb, var(--primary-color), #000);
-				--text-main: color-mix(in srgb, var(--primary-color) 30%, #fff);
-				--text-tertiary-color: color-mix(in srgb, var(--primary-color) 75%, #fff);
-				--text-secondary-color: color-mix(in srgb, var(--primary-color) 66%, #fff);
-				--border-color: color-mix(in srgb, var(--primary-color) 20%, #ffffff08);
-				--border-enabled-color: color-mix(in srgb, var(--primary-color) 50%, #ffffff80);
-				--message-bg: color-mix(in srgb, var(--primary-color) 20%, #ffffff08);
-				--scroll-bg: color-mix(in srgb, var(--primary-color) 70%, #797979);
-				--disabled-button-bg: color-mix(in srgb, var(--primary-color) 25%, #fff 15%);
-				--enabled-button-bg: color-mix(in srgb, var(--primary-color) 100%, #000 5%);
-				--scroll-fade-top: linear-gradient( 180deg,
-				color-mix(in srgb, var(--sidebar-bg) 0%, transparent) 0%,
-				color-mix(in srgb, var(--sidebar-bg) 28%, transparent) 56%,
-				color-mix(in srgb, var(--sidebar-bg) 62%, transparent) 84%,
-				var(--sidebar-bg) 100%);
-			}
+@-moz-document domain("chatgpt.com") {
+	/* October 2026 (2.0.0): ChatGPT was rebuilt on a new design system.
+	   Every color now comes from the --app-color-* palette that ChatGPT injects
+	   for html.chatgpt-theme[data-theme="dark" | "light"] (and nested [data-theme] scopes).
+	   Overriding that palette themes the whole app, so the old utility-class
+	   selectors (bg-token-*, .dark/.light, __menu-item, ...) are gone. */
 
-			:root.light {
-				--primary-color: var(--primary-color-light);
-				--bg-main: color-mix(in srgb, var(--primary-color) 20%, #fff 80%);
-				--sidebar-bg: color-mix(in srgb, var(--primary-color) 35%, #fff 75%);
-				--sidebar-button-hover: color-mix(in srgb, var(--primary-color), #fff);
-				--text-main: color-mix(in srgb, var(--primary-color) 30%, #000);
-				--text-tertiary-color: color-mix(in srgb, var(--primary-color) 75%, #000);
-				--border-color: color-mix(in srgb, var(--primary-color) 20%, #ffffff08);
-				--border-enabled-color: color-mix(in srgb, var(--primary-color) 50%, #00000080);
-				--message-bg: color-mix(in srgb, var(--primary-color) 20%, #ffffff08);
-				--scroll-bg: color-mix(in srgb, var(--primary-color) 70%, #fff);
-				--disabled-button-bg: color-mix(in srgb, var(--primary-color) 25%, #000 5%);
-				--enabled-button-bg: color-mix(in srgb, var(--primary-color) 100%, #000 5%);
-				--menu-item-highlighted: color-mix(in srgb, var(--primary-color) 100%, #fff 51%);
-				--scroll-fade-top: linear-gradient( 180deg,
-				color-mix(in srgb, var(--sidebar-bg) 0%, transparent) 33.621%,
-				var(--sidebar-bg) 114.66%);
-			}
-
-			.dark,
-			.light,
-			:is(.dark, .light) body {
-				--bg-primary: var(--sidebar-bg);
-				--bg-elevated-primary: var(--sidebar-button-hover);
-				--bg-elevated-secondary: var(--sidebar-bg);
-				--bg-tooltip: var(--sidebar-button-hover);
-				--bg-secondary-surface: var(--sidebar-bg);
-				--sidebar-surface-primary: var(--sidebar-bg);
-				--sidebar-surface-tertiary: var(--sidebar-surface-secondary);
-				--sidebar-surface-secondary: var(--sidebar-button-hover);
-				--surface-hover: var(--sidebar-button-hover);
-				--main-surface-tertiary: var(--scroll-bg);
-				--message-surface: var(--message-bg);
-				--main-surface-secondary: var(--sidebar-button-hover);
-				--main-surface-primary: var(--sidebar-button-hover);
-				--text-secondary: var(--text-secondary-color);
-				--text-tertiary: var(--text-tertiary-color);
-				--theme-secondary-btn-bg: var(--primary-color);
-				--theme-submit-btn-bg: var(--primary-color);
-				--theme-mini-msg-bg: var(--message-bg);
-				--interactive-bg-secondary-hover: var(--message-bg);
-			}
-
-			.user-message-bubble-color {
-				background-color: color-mix( in srgb,
-				var(--theme-user-msg-bg) calc((1 - var(--dynamic-user-message)) * 100%),
-				var(--primary-color) calc(var(--dynamic-user-message) * 100%)) !important;
-				/* Checkbox: dynamic accent when enabled, native ChatGPT blue when disabled */
-			}
-
-			*,
-			.dark:hover,
-			.light:hover {
-				scrollbar-color: var(--scroll-bg) transparent;
-			}
-
-			.__menu-item {
-				/* Colors for hover at least for buttons in the sidebar */
-				--menu-item-open: var(--message-bg);
-				--menu-item-highlighted: var(--message-bg);
-				--menu-item-open: var(--message-bg);
-				--menu-item-hover: var(--message-bg);
-			}
-
-			body,
-			html,
-			html:not(.screen-arch),
-			html:not(.screen-arch) body {
-				background-color: var(--bg-main);
-				color: var(--text-main)!important;
-			}
-
-			@media (width >=80rem) {
-				header#page-header {
-					background: none;
-
-					/* FIX: Overriden Chat Navbar Header to match the original design
-			December 2025: Compliant with the original OpenAI design */
-				}
-			}
-
-			@media (width <=80rem) {
-				header#page-header {
-					background: var(--bg-main);
-
-					/* April 2026: Finally fixed the stupid navbar missing bg */
-				}
-			}
-
-			div[data-radix-menu-content] {
-				background-color: var(--surface-hover);
-				/* FIX: Too Dark Model Selector */
-			}
-
-
-			.bg-token-main-surface-primary,
-			.relative.bg-token-main-surface-primary {
-				background-color: var(--bg-main);
-				/* Upgrade your Plan Page & Model Selector BG */
-			}
-
-			.bg-token-sidebar-surface-primary {
-				background-color: var(--sidebar-bg);
-			}
-
-			.from-token-sidebar-surface-primary {
-				--tw-gradient-from: var(--sidebar-bg);
-			}
-
-			.from-token-main-surface-primary {
-				--tw-gradient-from: var(--bg-main);
-			}
-
-			.bg-token-sidebar-surface-secondary {
-				background-color: var(--sidebar-button-hover);
-			}
-
-			@media (hover: hover) and (pointer: fine) {
-				.dark\:hover\:bg-token-main-surface-secondary:hover:is(.dark *) {
-					background-color: var(--sidebar-surface-secondary);
-				}
-			}
-
-			@media (hover: hover) and (pointer: fine) {
-				.hover\:bg-token-main-surface-secondary:hover {
-					background-color: var(--sidebar-surface-secondary);
-				}
-			}
-
-			.dark\:bg-token-main-surface-secondary:is(.dark *),
-			.dark\:bg-\[\#303030\]:is(.dark *) {
-				background-color: var(--main-surface-secondary);
-			}
-
-			.shadow-short:not(:is(.dark *)) {
-				background-color: #fff;
-				/* Light mode text input */
-			}
-
-			/* message input */
-			.dark svg {
-				color: var(--text-main)!important;
-			}
-
-			.dark\:bg-white:is(.dark *) {
-				background-color: var(--enabled-button-bg);
-				/* Deprecated */
-			}
-
-			.btn-green {
-				background-color: var(--primary-color);
-			}
-
-			.btn-secondary {
-				background-color: var(--bg-main);
-			}
-
-
-			button.btn.relative.btn-secondary.btn-small {
-				background-color: var(--enabled-button-bg);
-			}
-
-			@media (hover: hover) and (pointer: fine) {
-				.btn-green:hover {
-					background-color: var(--primary-color);
-					opacity: 0.7;
-				}
-			}
-
-
-			.bg-token-main-surface-tertiary {
-				background-color: var(--border-color);
-			}
-
-			.radix-state-open\:bg-token-main-surface-secondary[data-state=open] {
-				background-color: var(--message-bg);
-			}
-
-			.bg-token-main-surface-secondary {
-				background-color: var(--sidebar-button-hover);
-			}
-
-			@media (min-width: 768px) {
-				.md\:radix-state-active\:bg-token-main-surface-secondary[data-state=active] {
-					background-color: var(--sidebar-button-hover);
-				}
-			}
-
-
-			/* QUESTION: Remove in the future if doesn't break anything
-	.btn-primary:is(.dark *) {
-		background-color: var(--primary-color);
-		color: var(--text-main)!important;
-	20.05.25: Seems it's being used by the share button modal
-	}*/
-			:is(.dark, .light) .dark\:bg-gray-700 {
-				background-color: var(--message-bg);
-			}
-
-			@media (hover: hover) and (pointer: fine) {
-				.btn-primary:hover:is(.dark *) {
-					background-color: var(--scroll-bg);
-				}
-			}
-
-			:is(.dark, .light) .dark\:prose-invert :where(code):not(:where([class~=not-prose] *)):not(:where(pre *)) {
-				background-color: var(--disabled-button-bg);
-				/* Codeblock */
-				/* FIX: Exclude all <pre> descendants so block lines keep ChatGPT's 
-					transparent reset; old whitespace-pre! exclusion missed per-line <code> nodes */
-			}
-
-			.bg-token-bg-primary {
-				background-color: transparent;
-				/* FIX: Explore GPTs search input bg */
-			}
-
-			/* LATER: Add the toggle to switch between 2 button styles(Color, White)
-	button[inputstate="default"] {
-		background: #fff!important;
+	/* ---------- Base colors ----------
+	   --ay-base tints the surfaces (its chroma follows the tint strength),
+	   --ay-ink tints the text, --ay-accent stays the picked color for links, bubble, buttons. */
+	html.chatgpt-theme[data-theme],
+	.chatgpt-theme [data-theme] {
+		--ay-base: var(--ay-accent);
+		--ay-ink: var(--ay-accent);
 	}
-	button[inputstate="default"] > div > svg {
-		color:  var(--sidebar-bg)!important;
-	}
-	*/
-			:is(.dark, .light) .dark\:bg-token-main-surface-secondary {
-				background: var(--sidebar-button-hover);
-				/* Search hover on chats */
-			}
 
-			.bg-token-bg-elevated-secondary {
-				background-color: var(--sidebar-bg);
-				/* Sidebar BG for Chats and Settings */
-			}
-
-			.mix-blend-darken {
-				mix-blend-mode: normal;
-				/* Fix unused and breaking blending for images from search in chats */
-			}
-
-			.__menu-item:not(:disabled):not([data-disabled]):active:not(:has([data-trailing-button]:hover)),
-			.__menu-item:not(:disabled):not([data-disabled])[data-active],
-			.hover\:bg-token-bg-tertiary:hover {
-				background-color: var(--message-bg);
-				/* Active chat in the sidebar & settings buttons */
-			}
-
-			.content-fade:after {
-				background-color: var(--content-fade-bg, var(--bg-main));
-				;
-				/* June 2025: Remove the new weird gradient that has no purpose.
-		December 2025: Chat Container uses this for fading of scroll 
-				April 2026: Fixed again */
-			}
-
-			:is(.dark, .light) #thread-bottom-container::after {
-				background-color: var(--bg-main) !important;
-				/* August 2026: New composer footer fade must blend into the themed page */
-			}
-
-			:is(.dark, .light) [class*="--vt-disclaimer"] .bg-token-main-surface-primary {
-				--main-surface-primary: var(--bg-main) !important;
-				/* Disclaimer pill shadow follows the dynamic page background instead of black */
-			}
-
-			form.group\/composer.w-full > div > div {
-				background-color: var(--sidebar-button-hover)!important;
-				/* Chat Input Container */
-			}
-
-
-			div[data-testid="modal-settings"] > div > div > div {
-				background: var(--bg-main);
-				/* April 2026: Finally fixed the settings missing bg */
-			}
-
-			#modal-settings [role="dialog"] div:has(> [data-settings-tab-list]) {
-				background-color: var(--sidebar-bg);
-				/* Settings sidebar */
-			}
-
-			#modal-settings [data-settings-tab-list] [role="tab"][data-state="active"],
-			#modal-settings [data-settings-tab-list] [role="tab"][data-state="inactive"]:hover {
-				background-color: var(--message-bg) !important;
-				/* Settings active and hover states */
-			}
-
-			#modal-settings button[data-testid="close-button"] {
-				background-color: transparent !important;
-			}
-
-			#modal-settings button[data-testid="close-button"]:hover {
-				background-color: var(--message-bg) !important;
-			}
-
-			:is(.dark, .light) button[role="switch"][data-state="checked"] {
-				background-color: var(--primary-color) !important;
-				/* Dynamic checked toggle color */
-			}
-
-			:is(.dark, .light) :where([role="dialog"], [role="alertdialog"]) {
-				background-color: var(--bg-main) !important;
-				/* August 2026: Dynamic background for modal and popup content */
-			}
-
-			div[class="flex flex-row gap-2"] > button[aria-label] {
-				background: var(--primary-color);
-				/* April 2026: Voice Mode "End" button */
-			}
-
-			@media (hover: hover) and (pointer: fine) {
-				button.__composer-pill--neutral:hover {
-					background-color: var(--interactive-bg-secondary-hover);
-					/* FIX: Composer neutral pills (model selector) - match the icon-button hover */
-				}
-			}
-
-			button.__composer-pill--neutral[data-state=open],
-			button.__composer-pill--neutral[data-is-open] {
-				background-color: var(--interactive-bg-secondary-hover);
-				/* Composer neutral pills */
-			}
-
-			/* August 2026: Chat/Work selector moved to a new pill component.
-			   Its track uses a hard-coded dark color, while the selected thumb
-			   still carries the legacy bg-token-bg-primary class reset above. */
-			:is(.dark, .light) header#page-header [role="radiogroup"][aria-label="Select chat surface"] > :first-child {
-				background-color: var(--sidebar-bg);
-			}
-
-			:is(.dark, .light) header#page-header [role="radiogroup"][aria-label="Select chat surface"] .bg-token-bg-primary {
-				background-color: var(--sidebar-button-hover);
-			}
-
-			:is(.dark, .light) .bg-surface-primary {
-				background-color: var(--bg-main) !important;
-				/* August 2026: Suggested actions below the composer */
-			}
-
-			:is(.dark, .light) .bg-surface-primary li[data-selected] > button:first-of-type {
-				background-color: var(--message-bg) !important;
-				/* Suggested action hover: use the customizable accent instead of gray */
-			}
-
-			:is(.dark, .light) #conversation-header-actions.translucent-surface {
-				background-color: transparent !important;
-				backdrop-filter: none;
-				/* Temporary chat container should not draw a square behind the button */
-			}
-
-			:is(.dark, .light) #conversation-header-actions button[aria-label="Temporary chat"]:hover {
-				background-color: var(--surface-hover) !important;
-				/* Keep the circular hover tied to the customizable accent */
-			}
+	@supports (color: oklch(from red l c h)) {
+		html.chatgpt-theme[data-theme],
+		.chatgpt-theme [data-theme] {
+			--ay-base: oklch(from var(--ay-accent) l calc(c * var(--tint)) h);
+			--ay-neutral: oklch(from var(--ay-accent) l 0 h);
+			--ay-ink: color-mix(in oklab, var(--ay-base) calc(var(--tinted-text) * 100%), var(--ay-neutral));
 		}
+	}
+
+	/* ---------- Dark palette ---------- */
+	html.chatgpt-theme[data-theme="dark"],
+	.chatgpt-theme [data-theme="dark"] {
+		--ay-accent: var(--primary-color);
+		--ay-surface: color-mix(in srgb, #000 calc(var(--oled) * 100%),
+			color-mix(in srgb, var(--ay-base) 27.27%, #000));
+		--ay-surface-under: color-mix(in srgb, #000 calc(var(--oled) * 100%),
+			color-mix(in srgb, var(--ay-base) calc(27.27% - 7.27% * var(--sidebar-depth)), #000));
+		--ay-elevated: color-mix(in srgb, var(--ay-base) 45%, #000);
+		--ay-control: color-mix(in srgb, var(--ay-base) 65%, #000);
+		--ay-callout: color-mix(in srgb, var(--ay-base) 80%, #000);
+		--ay-editor: color-mix(in srgb, var(--ay-base) 35%, #000);
+		--ay-text: color-mix(in srgb, var(--ay-ink) 20%, #fff);
+		--ay-text-secondary: color-mix(in srgb, var(--ay-ink) 40%, #fff);
+		--ay-text-tertiary: color-mix(in srgb, var(--ay-ink) 60%, #fff);
+		--ay-link: color-mix(in srgb, var(--ay-accent) 50%, #fff);
+		--ay-accent-surface: color-mix(in srgb, var(--ay-accent) 55%, #000);
+		--ay-hover: color-mix(in srgb, var(--ay-base) 40%, transparent);
+		--ay-active: color-mix(in srgb, var(--ay-base) 55%, transparent);
+		--ay-user-message: var(--ay-accent);
+		--ay-native-user-message: rgb(50 50 50 / 85%);
+	}
+
+	/* ---------- Light palette ---------- */
+	html.chatgpt-theme[data-theme="light"],
+	.chatgpt-theme [data-theme="light"] {
+		--ay-accent: var(--primary-color-light);
+		--ay-surface: color-mix(in srgb, var(--ay-base) 7%, #fff);
+		--ay-surface-under: color-mix(in srgb, var(--ay-base) calc(7% + 8% * var(--sidebar-depth)), #fff);
+		--ay-elevated: #fff;
+		--ay-control: color-mix(in srgb, var(--ay-base) 13%, #fff);
+		--ay-callout: color-mix(in srgb, var(--ay-base) 18%, #fff);
+		--ay-editor: color-mix(in srgb, var(--ay-base) 4%, #fff);
+		--ay-text: color-mix(in srgb, var(--ay-ink) 18%, #0d0d0d);
+		--ay-text-secondary: color-mix(in srgb, var(--ay-ink) 40%, #1a1a1a);
+		--ay-text-tertiary: color-mix(in srgb, var(--ay-ink) 55%, #4a4a4a);
+		--ay-link: color-mix(in srgb, var(--ay-accent) 55%, #000);
+		--ay-accent-surface: color-mix(in srgb, var(--ay-accent) 18%, #fff);
+		--ay-hover: color-mix(in srgb, var(--ay-base) 14%, transparent);
+		--ay-active: color-mix(in srgb, var(--ay-base) 22%, transparent);
+		--ay-user-message: color-mix(in srgb, var(--ay-accent) 40%, #fff);
+		--ay-native-user-message: rgb(233 233 233 / 50%);
+	}
+
+	/* ---------- Palette mapping (shared by both modes) ---------- */
+	html.chatgpt-theme[data-theme],
+	.chatgpt-theme [data-theme] {
+		--codex-base-accent: var(--ay-accent);
+		--codex-base-ink: var(--ay-text);
+		--codex-base-surface: var(--ay-surface);
+
+		/* Surfaces */
+		--app-color-background-surface: var(--ay-surface);
+		--app-color-background-surface-under: var(--ay-surface-under);
+		--color-background-panel: var(--ay-surface);
+		--app-color-background-elevated-primary: var(--ay-elevated);
+		--app-color-background-elevated-primary-opaque: var(--ay-elevated);
+		--app-color-background-application-menu: var(--ay-elevated);
+		--app-color-background-card: var(--ay-elevated);
+		--app-color-background-elevated-secondary: var(--ay-control);
+		--app-color-background-elevated-secondary-opaque: var(--ay-control);
+		--app-color-background-control: var(--ay-control);
+		--color-background-control-opaque: var(--ay-control);
+		--color-background-composer-action-bar: var(--ay-control);
+		--color-background-callout-surface: var(--ay-callout);
+		--app-color-background-editor-opaque: var(--ay-editor);
+		--app-color-ads-background-secondary: var(--ay-control);
+
+		/* Buttons */
+		--app-color-background-button-primary: var(--ay-text);
+		--app-color-background-button-primary-inactive: var(--ay-text);
+		--app-color-background-button-primary-hover: color-mix(in srgb, var(--ay-text) 80%, transparent);
+		--app-color-background-button-primary-active: color-mix(in srgb, var(--ay-text) 90%, transparent);
+		--app-color-text-button-primary: var(--ay-surface);
+		--app-color-text-primary-solid: var(--ay-surface);
+		--app-color-background-button-secondary: var(--ay-control);
+		--app-color-background-button-secondary-hover: var(--ay-hover);
+		--app-color-background-button-secondary-active: var(--ay-active);
+		--app-color-background-button-tertiary-hover: var(--ay-hover);
+		--app-color-background-button-tertiary-active: var(--ay-active);
+		--app-color-ads-background-secondary-press: var(--ay-active);
+		--color-background-button-outline-hover: var(--ay-hover);
+
+		/* Send / voice buttons: neutral (text color) or the accent */
+		--ay-send: color-mix(in srgb, var(--ay-accent) calc(var(--send-button) * 100%), var(--ay-text));
+		--color-background-composer-primary: var(--ay-send);
+		--color-text-composer-primary: var(--ay-surface);
+
+		/* Chat / Work switch */
+		--color-background-mode-toggle-track: var(--ay-surface-under);
+		--color-background-mode-toggle-selected: var(--ay-control);
+
+		/* Accent */
+		--app-color-background-accent: var(--ay-accent-surface);
+		--app-color-background-accent-hover: var(--ay-accent-surface);
+		--app-color-background-accent-active: var(--ay-accent-surface);
+		--app-color-border-focus: var(--ay-link);
+		--app-color-text-accent: var(--ay-link);
+		--app-color-icon-accent: var(--ay-link);
+		--app-color-accent-blue: var(--ay-link);
+		--color-image-generation-accent: var(--ay-link);
+		--color-text-mode-toggle-accent: var(--ay-link);
+		--color-text-composer-reference: var(--ay-link);
+		--color-background-text-selection: color-mix(in srgb, var(--ay-accent) 55%, transparent);
+
+		/* Text & icons */
+		--app-color-text-foreground: var(--ay-text);
+		--app-color-text-foreground-secondary: var(--ay-text-secondary);
+		--app-color-text-foreground-tertiary: var(--ay-text-tertiary);
+		--app-color-text-secondary: var(--ay-text-secondary);
+		--app-color-text-button-secondary: var(--ay-text);
+		--app-color-text-button-tertiary: var(--ay-text-tertiary);
+		--app-color-foreground-application-menu: var(--ay-text);
+		--app-color-icon-primary: var(--ay-text);
+		--app-color-icon-secondary: var(--ay-text-secondary);
+		--app-color-icon-tertiary: var(--ay-text-tertiary);
+		--app-color-ads-text-primary: var(--ay-text);
+		--color-text-button-outline: var(--ay-text);
+		--color-text-mode-toggle-primary: var(--ay-text);
+		--color-text-mode-toggle-inactive: var(--ay-text-secondary);
+
+		/* Borders */
+		--app-color-border: color-mix(in srgb, var(--ay-text-tertiary) 20%, transparent);
+		--app-color-border-heavy: color-mix(in srgb, var(--ay-text-tertiary) 28%, transparent);
+		--app-color-border-light: color-mix(in srgb, var(--ay-text-tertiary) 10%, transparent);
+		--app-color-border-application-menu-separator: color-mix(in srgb, var(--ay-text-tertiary) 20%, transparent);
+		--app-color-ads-border-medium: color-mix(in srgb, var(--ay-text-tertiary) 20%, transparent);
+		--color-border-button-outline: color-mix(in srgb, var(--ay-text-tertiary) 20%, transparent);
+
+		/* User message bubble.
+		   Checkbox: dynamic color when enabled, native ChatGPT gray when disabled.
+		   Dynamic color is the accent or the custom color, depending on the select */
+		--ay-bubble: color-mix(in srgb,
+			var(--user-message-color) calc(var(--user-message-source) * 100%),
+			var(--ay-user-message));
+		--color-background-user-message: color-mix(in srgb,
+			var(--ay-native-user-message) calc((1 - var(--dynamic-user-message)) * 100%),
+			var(--ay-bubble) calc(var(--dynamic-user-message) * 100%));
+		--color-text-user-message: var(--ay-text);
+	}
+
+	@supports (color: oklch(from red l c h)) {
+		html.chatgpt-theme[data-theme],
+		.chatgpt-theme [data-theme] {
+			/* Light text on dark fills, dark text on light ones, so any picked color stays readable */
+			--color-text-user-message: oklch(from var(--color-background-user-message) clamp(0.15, (0.58 - l) * 1000, 0.97) calc(c * 0.2) h / 1);
+			--color-text-composer-primary: oklch(from var(--ay-send) clamp(0.15, (0.58 - l) * 1000, 0.97) calc(c * 0.2) h / 1);
+		}
+	}
+
+	/* ---------- Corner roundness ----------
+	   Every --radius-* token is base * scale, so scaling the bases (web shell values)
+	   also covers the things that read a base directly: code blocks, main panel corner.
+	   Fully round pills, buttons and avatars (--radius-full) stay round. */
+	html.chatgpt-theme[data-theme] {
+		--radius-2xs-base: calc(.125rem * var(--corner-radius));
+		--radius-xs-base: calc(.125rem * var(--corner-radius));
+		--radius-sm-base: calc(.25rem * var(--corner-radius));
+		--radius-md-base: calc(.375rem * var(--corner-radius));
+		--radius-lg-base: calc(.5rem * var(--corner-radius));
+		--radius-xl-base: calc(.75rem * var(--corner-radius));
+		--radius-2xl-base: calc(1rem * var(--corner-radius));
+		--radius-3xl-base: calc(1.5rem * var(--corner-radius));
+		--radius-4xl-base: calc(2rem * var(--corner-radius));
+		--composer-radius: calc(var(--spacing) * 7 * var(--corner-radius));
+		--radius-token-composer-single-line: calc(var(--spacing) * 5.5 * var(--corner-radius));
+	}
+
+	html.chatgpt-theme [data-user-message-bubble] {
+		--radius-2xl: calc(var(--spacing) * 5.5 * var(--corner-radius));
+	}
+
+	html.chatgpt-theme [data-composer-layout][style*="border-radius"] {
+		border-radius: min(var(--composer-surface-border-radius, 9999px), calc(var(--spacing) * 7 * var(--corner-radius))) !important;
+		/* The single-line composer pill writes its radius inline */
+	}
+
+	/* ---------- Layout ---------- */
+	html.chatgpt-theme body {
+		--thread-content-expanded-max-width: max(var(--thread-content-max-width, 48rem), var(--chat-width));
+		--thread-content-compact-max-width: max(40rem, var(--chat-width));
+		/* Chat width: "0px" keeps ChatGPT's own widths */
+	}
+
+	html.chatgpt-theme {
+		--font-ui-family: var(--ui-font), var(--font-sans-default);
+		--font-sans: var(--ui-font), var(--font-sans-default);
+		--font-code-family: var(--code-font), ui-monospace, "SFMono-Regular", "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+		/* "native" is not an installed font, so the default falls through to ChatGPT's own stack */
+	}
+
+	/* ---------- Hide elements ----------
+	   "Show" sets the variable to initial: the declaration becomes invalid and
+	   visibility falls back to inheriting, exactly as without the theme. */
+	html.chatgpt-theme .text-codex-description[data-markdown-copy="exclude"] {
+		visibility: var(--hide-disclaimer);
+	}
+
+	html.chatgpt-theme [class*="@container/home-mode-toggle"] {
+		visibility: var(--hide-mode-toggle);
+	}
+
+	html.chatgpt-theme [class*="group/home-suggestion-list-item"] {
+		visibility: var(--hide-suggestions);
+	}
+
+	/* ---------- Misc ---------- */
+	html.chatgpt-theme .app-shell-left-panel {
+		--color-surface: var(--ay-surface-under);
+		background-color: var(--ay-surface-under);
+		/* Sidebar: in the browser shell it reuses the main surface, keep it a shade darker like 1.x */
+	}
+
+	html.chatgpt-theme input[type="range"][style*="linear-gradient"] {
+		background: linear-gradient(90deg,
+			color-mix(in srgb, var(--ay-link) 35%, var(--ay-surface)) 0%,
+			var(--ay-link) 32%,
+			var(--ay-link) 100%) !important;
+		/* Settings > Appearance > Contrast: the gradient is written inline from the built-in accent */
+	}
+
+	html.chatgpt-theme,
+	html.chatgpt-theme * {
+		scrollbar-color: color-mix(in srgb, var(--ay-text-tertiary) 45%, transparent) transparent;
+	}
+}
